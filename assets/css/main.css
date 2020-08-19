@@ -1,3 +1,6 @@
+body {
+  font-family: "Oswald", sans-serif;
+}
 .btn-menu img {
   width: 26px;
 }
@@ -12,4 +15,31 @@
 }
 .bg-blue-kranec {
   background-color: rgba(32, 46, 76, 0.97);
+}
+.bg-skyblue-kranec {
+  background-color: #77bffa;
+}
+.menu-item-has-children a:first-child {
+  background-image: url("img/plus_less.png");
+  background-position: right top;
+  background-repeat: no-repeat;
+  padding: 0 50px 0 0;
+}
+a[title="abrir"] {
+  display: block;
+}
+.menu-item-has-children a.active {
+  background-position: right -26px;
+}
+.menu-item-has-children .sub-menu li a {
+  background: none !important;
+}
+.menu-item-has-children .sub-menu {
+  display: none;
+}
+.menu-item-has-children .sub-menu.show {
+  display: block;
+}
+.sub-menu {
+  padding: 0 0 0 2rem;
 }

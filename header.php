@@ -65,23 +65,29 @@
             src="wp-content/themes/kranec_theme/assets/images/logo_kranec_b.svg"
             alt=""
         /></a>
-        <ul>
-          <li>
-            Productos
-            <ul class="pl-8">
-              <li>Equipos de Protección Personal</li>
-              <li>Equipos de Protección Colectiva</li>
-            </ul>
-          </li>
-          <li>
-            Servicios
-            <ul class="pl-8">
-              <li>Servicio 1</li>
-              <li>Servicio 2</li>
-            </ul>
-          </li>
-          <li>ADN Empresarial</li>
-          <li>Nuestra Experiencia</li>
-          <li>Blog</li>
-        </ul>
+        <?php
+          wp_nav_menu(
+            array(
+              'menu' => 'primary',
+              'container' => '',
+              'theme_location' => 'primary',
+              'items_wrap' => '<ul id="%1$s" class="%2$s flex flex-col font-light text-white uppercase py-8 text-lg">%3$s</ul>',
+              'add_li_class'  => 'py-2'
+            )
+          )
+        ?>
+        <div class="w-full bg-skyblue-kranec h-1 rounded-sm"></div>
+        <div class="contact text-white py-8 text-lg">
+          <h2 class="uppercase">Contáctanos</h2>
+          <div class="flex flex-col">
+            <div class="pt-2">
+              <img src="" alt="">
+              <a href="mailto: ventas@kranec.ec" class="font-light">ventas@kranec.ec</a>
+            </div>
+            <div class="pt-2">
+              <img src="" alt="">
+              <a href="tel:593994146626" class="font-light">099 414 6626</a>
+            </div>
+          </div>
+        </div>
       </nav>
