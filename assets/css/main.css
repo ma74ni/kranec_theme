@@ -27,6 +27,9 @@ h3 {
 .logo-content img {
   width: 140px;
 }
+footer .logo-content img {
+  width: 140px;
+}
 .store-nav img {
   width: 43px;
 }
@@ -35,6 +38,24 @@ h3 {
 }
 .bg-blue-kranec {
   background-color: rgba(32, 46, 76, 0.97);
+}
+.bg-blue-kranec-50 {
+  background-color: rgba(32, 46, 76, 0.5);
+}
+.i-social {
+  width: 32px;
+  height: 32px;
+}
+.bl-2 {
+  border-left-width: 2px;
+  border-style: solid;
+}
+.br-2 {
+  border-right-width: 2px;
+  border-style: solid;
+}
+.border-skyblue-kranec {
+  border-color: #77bffa;
 }
 .bg-blue-kranec-200 {
   background-color: #102a4b;
