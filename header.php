@@ -10,7 +10,7 @@
   </head>
   <body>
     <div id="app">
-      <header class="fixed w-full">
+      <header class="fixed w-full pt-10 z-10">
         <div class="container mx-auto flex justify-between">
           <div class="flex items-center">
             <button @click="isOpen = !isOpen" class="btn-menu pr-4">
@@ -91,3 +91,4 @@
           </div>
         </div>
       </nav>
+      <div id="fullpage">

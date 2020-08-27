@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       });
+      const seccitionsPage = new fullpage("#fullpage", {});
     },
   });
 });

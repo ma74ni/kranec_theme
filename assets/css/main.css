@@ -1,5 +1,25 @@
 body {
   font-family: "Oswald", sans-serif;
+  color: #202e4c;
+}
+h2 {
+  font-family: "Bebas Neue", cursive;
+  font-size: 3rem;
+}
+p {
+  font-size: 1.875rem;
+}
+h3 {
+  font-family: "Bebas Neue", cursive;
+  font-size: 2rem;
+}
+
+.single-post img {
+  margin: 0 auto !important;
+}
+.subtitle h2 {
+  border-bottom: 1px solid #77bffa;
+  width: fit-content;
 }
 .btn-menu img {
   width: 26px;
@@ -16,8 +36,21 @@ body {
 .bg-blue-kranec {
   background-color: rgba(32, 46, 76, 0.97);
 }
+.bg-blue-kranec-200 {
+  background-color: #102a4b;
+}
 .bg-skyblue-kranec {
   background-color: #77bffa;
+}
+.bg-skyblue-kranec-200 {
+  background-color: #496ea1;
+}
+.btn-dropdown {
+  bottom: 3%;
+  z-index: 99;
+}
+.w-k-394 {
+  width: 394px;
 }
 .menu-item-has-children a:first-child {
   background-image: url("img/plus_less.png");
