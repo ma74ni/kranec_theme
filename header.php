@@ -14,30 +14,45 @@
         <div class="container mx-auto flex justify-between">
           <div class="flex items-center">
             <button @click="isOpen = !isOpen" class="btn-menu pr-4">
+              <?php
+                if(is_front_page() || is_page(18)){
+              ?>
               <img
-                src="wp-content/themes/kranec_theme/assets/images/nav.svg"
+                src="<?php echo get_template_directory_uri(); ?>/assets/images/nav.svg"
                 alt=""
               />
-            </button>
-            <a href="" class="logo-content"
-              ><img
-                src="wp-content/themes/kranec_theme/assets/images/logo_kranec.svg"
+              <?php
+              } else {
+              ?>
+              <img
+                src="<?php echo get_template_directory_uri(); ?>/assets/images/nav_a.svg"
                 alt=""
-            /></a>
+              />
+              <?php 
+              }
+              ?>
+            </button>
+            <a href="" class="logo-content">
+              <?php
+                if ( function_exists( 'the_custom_logo' ) ) {
+                  the_custom_logo();
+                }
+              ?>
+            </a>
           </div>
           <div class="">
             <ul class="flex store-nav">
               <li class="pr-4">
                 <a href=""
                   ><img
-                    src="wp-content/themes/kranec_theme/assets/images/login.svg"
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/login.svg"
                     alt=""
                 /></a>
               </li>
               <li>
                 <a href=""
                   ><img
-                    src="wp-content/themes/kranec_theme/assets/images/cart.svg"
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/cart.svg"
                     alt=""
                 /></a>
               </li>
@@ -62,7 +77,7 @@
       >
         <a href="" class="logo-nav-content"
           ><img
-            src="wp-content/themes/kranec_theme/assets/images/logo_kranec_b.svg"
+            src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_kranec_b.svg"
             alt=""
         /></a>
         <?php

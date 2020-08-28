@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       });
-      const seccitionsPage = new fullpage("#fullpage", {});
+      const seccitionsPage = new fullpage("#fullpage", {
+        scrollOverflow: true,
+      });
     },
   });
 });

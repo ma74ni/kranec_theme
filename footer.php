@@ -1,3 +1,6 @@
+        <?php
+          if(is_front_page() || is_page(18)){
+        ?>
         <div class="section">
           <div class="subtitle text-center mb-8">
             <h2 class="w-auto inline-block mx-auto">VISITA NUESTRO BLOG</h2>
@@ -31,6 +34,9 @@
             </div>
           </div>
         </div>
+        <?php 
+          }
+        ?>
         <footer class="section bg-blue-kranec-200">
           <div class="container mx-auto">
             <section class="mb-12">

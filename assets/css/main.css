@@ -2,6 +2,9 @@ body {
   font-family: "Oswald", sans-serif;
   color: #202e4c;
 }
+h1 {
+  font-family: "Bebas Neue", cursive;
+}
 h2 {
   font-family: "Bebas Neue", cursive;
   font-size: 3rem;
@@ -13,7 +16,6 @@ h3 {
   font-family: "Bebas Neue", cursive;
   font-size: 2rem;
 }
-
 .single-post img {
   margin: 0 auto !important;
 }
@@ -54,6 +56,13 @@ footer .logo-content img {
   border-right-width: 2px;
   border-style: solid;
 }
+.hk-2 {
+  height: 2px;
+}
+.wk-420 {
+  width: 420px;
+}
+
 .border-skyblue-kranec {
   border-color: #77bffa;
 }
@@ -68,6 +77,10 @@ footer .logo-content img {
 }
 .btn-dropdown {
   bottom: 3%;
+  z-index: 99;
+}
+.btn-dropdown-post {
+  bottom: 12%;
   z-index: 99;
 }
 .w-k-394 {
