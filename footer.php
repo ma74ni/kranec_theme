@@ -5,13 +5,13 @@
           <div class="subtitle text-center mb-8">
             <h2 class="w-auto inline-block mx-auto">VISITA NUESTRO BLOG</h2>
           </div>
-          <div class="container mx-auto">
+          <div class="container md:px-8 mx-auto">
             <div class="grid grid-cols-3 gap-12">
             <?php
-            $pincipalPosts = new  WP_QUERY('cat=3&orderby=date&order=ASC');
-              if( $pincipalPosts->have_posts() ) {
-                while ( $pincipalPosts->have_posts() ) {
-                  $pincipalPosts->the_post();?>
+            $principalPosts = new  WP_QUERY('orderby=date&order=ASC&posts_per_page=3');
+              if( $principalPosts->have_posts() ) {
+                while ( $principalPosts->have_posts() ) {
+                  $principalPosts->the_post();?>
                   <div class="single-post text-center">
                     <a href="<?php the_permalink(); ?>">
                         <?php the_post_thumbnail(); ?>
@@ -38,7 +38,7 @@
           }
         ?>
         <footer class="section bg-blue-kranec-200">
-          <div class="container mx-auto">
+          <div class="container  md:px-8 mx-auto">
             <section class="mb-12">
               <div class="subtitle text-center mb-8">
                 <h2 class="w-auto inline-block mx-auto text-white">COMPRA NUESTROS PRODUCTOS EN LÍNEA</h2>
@@ -57,8 +57,8 @@
             <section class="my-40">
             <div class="flex items-center">
               <div class="flex-1 pr-4">
-                <div class="subtitle text-center">
-                  <h2 class="w-auto inline-block mx-auto text-white">CONTÁCTANOS</h2>
+                <div class="footer-contact text-center mx-auto">
+                  <h2 class="text-white">CONTÁCTANOS</h2>
                 </div>
               </div>
               <div class="flex-1 px-4 bl-2 br-2 border-skyblue-kranec">

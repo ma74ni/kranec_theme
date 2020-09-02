@@ -1,0 +1,78 @@
+<div class="section">
+  <?php
+    if (is_home() && get_option('page_for_posts') ) {
+    $img = wp_get_attachment_image_src(get_post_thumbnail_id(get_option('page_for_posts')),'full'); 
+    $featured_image = $img[0];
+    ?>
+    <div class="relative header-blog">
+      <h1 class="absolute text-center w-full text-5xl text-white"><?php single_post_title(); ?></h1>
+      <img class="object-cover w-full" src="<?php echo $featured_image; ?>">
+      <div class="btn-dropdown-post absolute text-center w-full">
+      <button class="nextSection mx-auto">
+        <img
+          
+          src="<?php echo get_template_directory_uri(); ?>/assets/images/chev-white.png"
+          alt="deslizar"
+        />
+      </button>
+      </div>
+    </div>
+<?php } ?>
+   
+</div>
+<div class="section">
+  <div class="container mx-auto">
+    <div class="my-8">
+      <div class="text-center">
+        <h2>Categorías</h2>
+      </div>
+      <div class="mx-auto">
+        <?php
+        $post = get_post();
+        if ( $post ) {
+        $categories = get_categories($post->ID); 
+          if(! empty($categories)) {?>
+        <ul class="blog-cat-list font-light uppercase flex justify-center">
+          <?php
+            foreach($categories as $category) { ?>
+            <li>
+              <a class="inline-block px-8" href=""><?php echo $category->name; ?></a>
+            </li>
+      <?php } ?>
+        </ul>
+        <?php }
+        } ?>
+      </div>
+    </div>
+    <div class="flex flex-wrap">
+      <?php
+      $principalPosts = new  WP_QUERY('orderby=date&order=ASC&posts_per_page=4');
+      if($principalPosts->have_posts()){ while($principalPosts->have_posts()){
+      $principalPosts->the_post(); ?>
+      <div class="w-1/2 p-2">
+        <div class="single-post text-center">
+          <a href="<?php the_permalink(); ?>">
+            <?php the_post_thumbnail(); ?>
+          </a>
+          <h3 class="header-post uppercase">
+            <a href="<?php the_permalink(); ?>">
+              <?php the_title(); ?>
+            </a>
+          </h3>
+          <p class="text-xl"><?php the_excerpt(); ?></p>
+          <div class="my-8">
+            <a
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+              href="<?php the_permalink(); ?>"
+              title="<?php the_title_attribute(); ?>"
+              >Leer más</a
+            >
+          </div>
+        </div>
+      </div>
+      <?php
+        }
+      } ?>
+    </div>
+  </div>
+</div>

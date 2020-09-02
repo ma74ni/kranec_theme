@@ -11,20 +11,20 @@
   <body>
     <div id="app">
       <header class="fixed w-full pt-10 z-10">
-        <div class="container mx-auto flex justify-between">
+        <div class="container mx-auto md:px-8 flex justify-between">
           <div class="flex items-center">
             <button @click="isOpen = !isOpen" class="btn-menu pr-4">
               <?php
-                if(is_front_page() || is_page(18)){
+                if(is_front_page() || is_page(18) || is_home()){
               ?>
-              <img
+              <img id="sandwich-icon"
                 src="<?php echo get_template_directory_uri(); ?>/assets/images/nav.svg"
                 alt=""
               />
               <?php
               } else {
               ?>
-              <img
+              <img id="sandwich-icon"
                 src="<?php echo get_template_directory_uri(); ?>/assets/images/nav_a.svg"
                 alt=""
               />

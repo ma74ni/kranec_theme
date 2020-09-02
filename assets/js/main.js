@@ -27,8 +27,36 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       });
+      const inicalSrc = document.getElementById("sandwich-icon").src;
       const seccitionsPage = new fullpage("#fullpage", {
         scrollOverflow: true,
+        verticalCentered: true,
+        controlArrows: false,
+        slidesNavigation: true,
+        afterLoad: function(anchorLink, index) {
+          // last section loaded
+          let iconMenuSrc = document.getElementById("sandwich-icon").src;
+          const arraySrc = iconMenuSrc.split("/");
+          const imageNameUbication = arraySrc.length;
+          if (index.isLast && arraySrc[imageNameUbication - 1] == "nav_a.svg") {
+            const newSrc = iconMenuSrc.replace("nav_a.svg", "nav.svg");
+            document.getElementById("sandwich-icon").src = newSrc;
+          } else {
+            document.getElementById("sandwich-icon").src = inicalSrc;
+          }
+        },
+        afterRender: function() {
+          setInterval(function() {
+            fullpage_api.moveSlideRight();
+          }, 6000);
+        },
+      });
+      const nextButton = document.querySelectorAll(".nextSection");
+      nextButton.forEach((button) => {
+        button.addEventListener("click", () => {
+          console.log("ok");
+          fullpage_api.moveSectionDown();
+        });
       });
     },
   });

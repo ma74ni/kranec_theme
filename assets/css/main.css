@@ -23,6 +23,22 @@ h3 {
   border-bottom: 1px solid #77bffa;
   width: fit-content;
 }
+.fp-slidesNav.fp-bottom {
+  bottom: 14%;
+}
+.fp-slidesNav ul li a span {
+  background: #ffffff;
+}
+.fp-slidesNav ul li a.active span {
+  background: #77bffa;
+}
+.footer-contact {
+  width: fit-content;
+  border-bottom: 1px solid #102a4b;
+}
+.footer-contact:hover {
+  border-bottom: 1px solid #77bffa;
+}
 .btn-menu img {
   width: 26px;
 }
@@ -80,11 +96,22 @@ footer .logo-content img {
   z-index: 99;
 }
 .btn-dropdown-post {
-  bottom: 12%;
+  bottom: 8%;
   z-index: 99;
 }
 .w-k-394 {
   width: 394px;
+}
+.blog-cat-list li {
+  background-image: url("img/separador01.jpg");
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+.blog-cat-list li:last-child {
+  background: none;
+}
+.header-blog h1 {
+  top: 40%;
 }
 .menu-item-has-children a:first-child {
   background-image: url("img/plus_less.png");
