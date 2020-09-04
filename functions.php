@@ -166,4 +166,71 @@ $content = preg_replace("/<img[^>]+\>/i", "", $content, 1);
 } return $content;
 }
 add_filter('the_content', 'krnc_remove_first_image');
+
+function krnc_create_portfolio_taxonomy() {
+  register_taxonomy(
+    'portfolio-taxonomy',
+    'portfolio',
+    array(
+      'label' => __('Categorías'),
+      'rewrite' => array(
+        'slug' => 'portfolio-category'
+      ),
+      'hierarchical' => true
+    )
+  );
+}
+add_action('init', 'krnc_create_portfolio_taxonomy');
+
+function krnc_create_portfolio_posttype() {
+  register_post_type('portfolio',
+  array(
+    'labels' => array(
+      'name' => __('Portafolio'),
+      'singular_name' => __('Portafolio')
+    ),
+    'public' => true,
+    'menu_icon' => 'dashicons-portfolio',
+    'has_archive' => false,
+    'rewrite' => array('slug' => 'experiencia'),
+    'taxonomies' => array( 'portfolio-taxonomy' ),
+    'supports' => array( 'title', 'editor', 'thumbnail', )
+  ));
+}
+add_action('init', 'krnc_create_portfolio_posttype');
+
+function myplugin_add_custom_box() {
+
+    $screens = array('portfolio' );
+
+    foreach ( $screens as $screen ) {
+
+        add_meta_box(
+            'myplugin_sectionid',
+            __( 'Cliente', 'myplugin_textdomain' ),
+            'myplugin_inner_custom_box',
+            $screen
+        );
+    }
+}
+add_action( 'add_meta_boxes', 'myplugin_add_custom_box' );
+
+function myplugin_inner_custom_box( $post ) {
+
+  // Add an nonce field so we can check for it later.
+  wp_nonce_field( 'myplugin_inner_custom_box', 'myplugin_inner_custom_box_nonce' );
+
+  /*
+   * Use get_post_meta() to retrieve an existing value
+   * from the database and use the value for the form.
+   */
+  $value = get_post_meta( $post->ID, '_my_meta_value_key', true );
+
+  echo '<label for="myplugin_new_field">';
+       _e( "Subir logotipo", 'myplugin_textdomain' );
+  echo '</label> ';
+  echo '<input type="file" id="myplugin_new_field" name="myplugin_new_field" value="' . esc_attr( $value ) . '" size="25" />';
+
+}
+
 ?>

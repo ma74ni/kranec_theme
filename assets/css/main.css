@@ -102,6 +102,9 @@ footer .logo-content img {
 .w-k-394 {
   width: 394px;
 }
+.new-row {
+  grid-column-start: 2;
+}
 .blog-cat-list li {
   background-image: url("img/separador01.jpg");
   background-position: right center;
