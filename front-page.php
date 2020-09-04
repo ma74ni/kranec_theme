@@ -75,25 +75,22 @@ client_order FROM $table_client WHERE `client_status` = 1 ORDER BY
             if(!empty($results)) {
               foreach($results as $row){
                 if($count === 1 ){?>
-      <div class="mx-auto">
+                <div class="mx-auto">
         <img
           src="<?php echo $url_uploads; ?>/<?php echo $row->client_logo; ?>"
           alt="<?php echo $row->client_name; ?>"
         />
       </div>
-      <?php } else if($count >
-      1) { ?>
-      <div
-        class="mx-auto <?php echo ((($count-1) % 6) == 0) ? 'new-row' : '' ?>"
-      >
+                <?php } else if($count > 1) { ?>
+                <div class="mx-auto <?php echo ((($count-1) % 6) == 0) ? 'new-row' : '' ?>">
         <img
           src="<?php echo $url_uploads; ?>/<?php echo $row->client_logo; ?>"
           alt="<?php echo $row->client_name; ?>"
         />
       </div>
-      <?php }
+                <?php }
               ?>
-
+      
       <?php 
         $count ++;
             }

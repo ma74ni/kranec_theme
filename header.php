@@ -106,4 +106,11 @@
           </div>
         </div>
       </nav>
+      <div class="btn-whatsapp fixed w-full z-20">
+        <div class="container md:px-8 mx-auto relative">
+          <a href="https://wa.me/593" target="_blank" class="absolute right-0 block">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/whatsapp-green.png" alt="whatsapp" title="CONVERSEMOS">
+          </a>
+        </div>
+</div>
       <div id="fullpage">
