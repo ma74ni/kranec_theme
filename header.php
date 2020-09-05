@@ -15,7 +15,7 @@
           <div class="flex items-center">
             <button @click="isOpen = !isOpen" class="btn-menu pr-4">
               <?php
-                if(is_front_page() || is_page(18) || is_home()){
+                if(is_front_page() || is_home()){
               ?>
               <img id="sandwich-icon"
                 src="<?php echo get_template_directory_uri(); ?>/assets/images/nav.svg"
@@ -101,16 +101,20 @@
             </div>
             <div class="pt-2">
               <img src="" alt="">
-              <a href="tel:593994146626" class="font-light">099 414 6626</a>
+              <a href="tel:593994146626" class="text-k-blue font-light">099 414 6626</a>
             </div>
           </div>
         </div>
       </nav>
+      <?php 
+      if(is_front_page()){
+      ?>
       <div class="btn-whatsapp fixed w-full z-20">
         <div class="container md:px-8 mx-auto relative">
           <a href="https://wa.me/593" target="_blank" class="absolute right-0 block">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/whatsapp-green.png" alt="whatsapp" title="CONVERSEMOS">
           </a>
         </div>
+      <?php } ?>
 </div>
       <div id="fullpage">

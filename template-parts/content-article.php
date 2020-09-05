@@ -20,12 +20,11 @@
 </div>
 
 <div class="section">
-  <div class="container mx-auto mt-20 px-20">
+  <div class="container mx-auto mt-20 px-20 py-12 border-b-2 border-kskyblue-100">
     <?php
       the_content();
     ?>
   </div>
-  <div class="hk-2 wk-420 bg-skyblue-kranec mx-auto mt-8 mb-20"></div>
   <div class="text-center my-12 mx-auto">
     <h2>Puedes ver estros productos en nuestra tienda</h2>
   </div>

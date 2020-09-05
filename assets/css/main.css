@@ -19,10 +19,6 @@ h3 {
 .single-post img {
   margin: 0 auto !important;
 }
-.subtitle h2 {
-  border-bottom: 1px solid #77bffa;
-  width: fit-content;
-}
 .fp-slidesNav.fp-bottom {
   bottom: 14%;
 }
@@ -34,10 +30,6 @@ h3 {
 }
 .footer-contact {
   width: fit-content;
-  border-bottom: 1px solid #102a4b;
-}
-.footer-contact:hover {
-  border-bottom: 1px solid #77bffa;
 }
 .btn-menu img {
   width: 26px;
@@ -60,44 +52,28 @@ footer .logo-content img {
 .bg-blue-kranec-50 {
   background-color: rgba(32, 46, 76, 0.5);
 }
+
 .i-social {
   width: 32px;
   height: 32px;
-}
-.bl-2 {
-  border-left-width: 2px;
-  border-style: solid;
-}
-.br-2 {
-  border-right-width: 2px;
-  border-style: solid;
-}
-.hk-2 {
-  height: 2px;
-}
-.wk-420 {
-  width: 420px;
-}
-
-.border-skyblue-kranec {
-  border-color: #77bffa;
-}
-.bg-blue-kranec-200 {
-  background-color: #102a4b;
-}
-.bg-skyblue-kranec {
-  background-color: #77bffa;
-}
-.bg-skyblue-kranec-200 {
-  background-color: #496ea1;
 }
 .btn-dropdown {
   bottom: 3%;
   z-index: 99;
 }
 .btn-dropdown-post {
-  bottom: 8%;
-  z-index: 99;
+  bottom: 11%;
+  z-index: 999;
+}
+.v-p-w h2 {
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 12px;
+}
+.v-p-w p {
+  padding-bottom: 28px;
+  margin-bottom: 40px;
+  font-weight: 100;
+  background: url("img/v-separator.jpg") no-repeat center bottom;
 }
 .btn-whatsapp {
   bottom: 7%;
@@ -110,14 +86,6 @@ footer .logo-content img {
 }
 .new-row {
   grid-column-start: 2;
-}
-.blog-cat-list li {
-  background-image: url("img/separador01.jpg");
-  background-position: right center;
-  background-repeat: no-repeat;
-}
-.blog-cat-list li:last-child {
-  background: none;
 }
 .header-blog h1 {
   top: 40%;
@@ -145,4 +113,7 @@ a[title="abrir"] {
 }
 .sub-menu {
   padding: 0 0 0 2rem;
+}
+.pilares img {
+  margin: 0 auto;
 }

@@ -25,7 +25,7 @@
       <?php
               if($row->slide_button == 1) { ?>
       <button
-        class="bg-skyblue-kranec hover:bg-skyblue-kranec-200 text-white font-bold py-2 px-12 rounded-full"
+        class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full"
       >
         <?php echo $row->slide_button_text; ?>
       </button>
@@ -35,8 +35,8 @@
   <?php 
               }
           } ?>
-  <div class="btn-dropdown-post absolute w-full">
-    <button class="nextSection mx-auto">
+  <div class="btn-dropdown-post absolute text-center w-full">
+    <button class="nextSection">
       <img
         src="<?php echo get_template_directory_uri(); ?>/assets/images/chev-white.png"
         alt="deslizar"
@@ -51,7 +51,7 @@
       ?>
   </div>
   <div class="btn-dropdown-post absolute text-center w-full">
-    <button class="nextSection mx-auto">
+    <button class="nextSection">
       <img
         src="<?php echo get_template_directory_uri(); ?>/assets/images/chev-skyblue.png"
         alt="deslizar"
@@ -65,8 +65,8 @@ client_order FROM $table_client WHERE `client_status` = 1 ORDER BY
 `client_order`" ); ?>
 <div class="section text-center">
   <div class="container md:px-8 mx-auto">
-    <div class="subtitle text-center mb-8">
-      <h2 class="w-auto inline-block mx-auto">CLIENTES</h2>
+    <div class="text-center mb-8">
+      <h2 class="w-auto inline-block border-b-2 border-kskyblue-100 mx-auto">CLIENTES</h2>
     </div>
     <div class="grid grid-cols-6 gap-2 mx-auto">
       <?php
@@ -98,7 +98,7 @@ client_order FROM $table_client WHERE `client_status` = 1 ORDER BY
           ?>
     </div>
     <button
-      class="bg-skyblue-kranec hover:bg-skyblue-kranec-200 text-white font-bold py-2 px-12 rounded-full"
+      class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full"
     >
       Proyectos
     </button>

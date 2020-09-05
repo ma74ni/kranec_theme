@@ -4,9 +4,13 @@
     $img = wp_get_attachment_image_src(get_post_thumbnail_id(get_option('page_for_posts')),'full'); 
     $featured_image = $img[0];
     ?>
-    <div class="relative header-blog">
+    <div class="header-blog">
+      <div
+      class="slide bg-no-repeat bg-cover bg-center"
+      style="background-image: url('<?php echo $featured_image; ?>')"
+    >
       <h1 class="absolute text-center w-full text-5xl text-white"><?php single_post_title(); ?></h1>
-      <img class="object-cover w-full" src="<?php echo $featured_image; ?>">
+    </div>
       <div class="btn-dropdown-post absolute text-center w-full">
       <button class="nextSection mx-auto">
         <img
@@ -32,7 +36,7 @@
         if ( $post ) {
         $categories = get_categories($post->ID); 
           if(! empty($categories)) {?>
-        <ul class="blog-cat-list font-light uppercase flex justify-center">
+        <ul class="blog-cat-list font-light uppercase flex divide-x-2 divide-kskyblue-100 justify-center">
           <?php
             foreach($categories as $category) { ?>
             <li>
@@ -62,7 +66,7 @@
           <p class="text-xl"><?php the_excerpt(); ?></p>
           <div class="my-8">
             <a
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+              class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-4 rounded-full"
               href="<?php the_permalink(); ?>"
               title="<?php the_title_attribute(); ?>"
               >Leer más</a
