@@ -66,7 +66,7 @@ client_order FROM $table_client WHERE `client_status` = 1 ORDER BY
 <div class="section text-center">
   <div class="container md:px-8 mx-auto">
     <div class="text-center mb-8">
-      <h2 class="w-auto inline-block border-b-2 border-kskyblue-100 mx-auto">CLIENTES</h2>
+      <h2 class="w-auto inline-block mx-auto separator-h-c-200">CLIENTES</h2>
     </div>
     <div class="grid grid-cols-6 gap-2 mx-auto">
       <?php

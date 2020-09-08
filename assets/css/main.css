@@ -114,6 +114,14 @@ a[title="abrir"] {
 .sub-menu {
   padding: 0 0 0 2rem;
 }
+.separator-h-c-200 {
+  background: url("img/h-separador-02.jpg") no-repeat center bottom;
+}
+.pilares p {
+  font-weight: 300;
+  background: url("img/h-separador-02.jpg") no-repeat left top;
+  margin-top: 20px;
+}
 .pilares img {
   margin: 0 auto;
 }

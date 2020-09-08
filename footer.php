@@ -3,7 +3,7 @@
         ?>
         <div class="section">
           <div class="text-center mb-8">
-            <h2 class="w-auto inline-block border-b-2 border-kskyblue-100 mx-auto">VISITA NUESTRO BLOG</h2>
+            <h2 class="w-auto inline-block mx-auto separator-h-c-200">VISITA NUESTRO BLOG</h2>
           </div>
           <div class="container md:px-8 mx-auto">
             <div class="grid grid-cols-3 gap-12">
@@ -41,7 +41,7 @@
           <div class="container  md:px-8 mx-auto">
             <section class="mb-12">
               <div class="text-center mb-8">
-                <h2 class="w-auto inline-block border-b-2 border-kskyblue-100 mx-auto text-white">COMPRA NUESTROS PRODUCTOS EN LÍNEA</h2>
+                <h2 class="w-auto inline-block mx-auto separator-h-c-200 text-white">COMPRA NUESTROS PRODUCTOS EN LÍNEA</h2>
               </div>
               <div class="flex justify-center">
                 <div class="text-center px-4 py-2 m-2">
@@ -58,7 +58,7 @@
             <div class="flex items-center divide-x-2 divide-kskyblue-100">
               <div class="flex-1 pr-4">
                 <div class="footer-contact text-center mx-auto">
-                  <h2 class="text-white border-b-2 border-kblue-200 hover:border-kskyblue-100">CONTÁCTANOS</h2>
+                  <h2 class="text-white w-auto inline-block mx-auto separator-h-c-200">CONTÁCTANOS</h2>
                 </div>
               </div>
               <div class="flex-1 px-4">
