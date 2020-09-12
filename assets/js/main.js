@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         message: "Hola desde Vue",
         isOpen: false,
         isShow: false,
+        openTab: 1,
       };
     },
     methods: {},
@@ -35,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         slidesNavigation: true,
         afterLoad: function(anchorLink, index) {
           // last section loaded
-          let iconMenuSrc = document.getElementById("sandwich-icon").src;
+          /* let iconMenuSrc = document.getElementById("sandwich-icon").src;
           const arraySrc = iconMenuSrc.split("/");
           const imageNameUbication = arraySrc.length;
           if (index.isLast && arraySrc[imageNameUbication - 1] == "nav_a.svg") {
@@ -43,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("sandwich-icon").src = newSrc;
           } else {
             document.getElementById("sandwich-icon").src = inicalSrc;
-          }
+          } */
         },
         afterRender: function() {
           setInterval(function() {
@@ -54,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const nextButton = document.querySelectorAll(".nextSection");
       nextButton.forEach((button) => {
         button.addEventListener("click", () => {
-          console.log("ok");
           fullpage_api.moveSectionDown();
         });
       });

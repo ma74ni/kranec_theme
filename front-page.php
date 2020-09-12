@@ -5,9 +5,10 @@
   if(have_posts()){
     while(have_posts()){
       the_post();
+      $prefix = $wpdb->prefix;
       $url_uploads = wp_get_upload_dir()["baseurl"];
-      $table_slide = 'wp_krnc_slide';
-      $table_client = 'wp_krnc_client';
+      $table_slide = $prefix . 'slide';
+      $table_client = $prefix . 'client';
       $results = $wpdb->get_results( "SELECT * FROM $table_slide WHERE
 `slide_status` = 1" ); ?>
 <div class="section text-center">
@@ -62,46 +63,44 @@
 <?php
       $results = $wpdb->get_results( "SELECT client_name, client_logo,
 client_order FROM $table_client WHERE `client_status` = 1 ORDER BY
-`client_order`" ); ?>
+`client_order`" ); 
+  $rowsQuery = $wpdb->num_rows;
+  $cols = 6;
+  $rowsShow =  ceil($rowsQuery / $cols);
+  ?>
 <div class="section text-center">
   <div class="container md:px-8 mx-auto">
     <div class="text-center mb-8">
       <h2 class="w-auto inline-block mx-auto separator-h-c-200">CLIENTES</h2>
     </div>
-    <div class="grid grid-cols-6 gap-2 mx-auto">
-      <?php
-      $count = 1;
-      $new_class = 'new-row';
-            if(!empty($results)) {
-              foreach($results as $row){
-                if($count === 1 ){?>
-                <div class="mx-auto">
-        <img
-          src="<?php echo $url_uploads; ?>/<?php echo $row->client_logo; ?>"
-          alt="<?php echo $row->client_name; ?>"
-        />
-      </div>
-                <?php } else if($count > 1) { ?>
-                <div class="mx-auto <?php echo ((($count-1) % 6) == 0) ? 'new-row' : '' ?>">
-        <img
-          src="<?php echo $url_uploads; ?>/<?php echo $row->client_logo; ?>"
-          alt="<?php echo $row->client_name; ?>"
-        />
-      </div>
-                <?php }
-              ?>
-      
-      <?php 
-        $count ++;
-            }
+          <?php
+          if(!empty($results)) {
+            $contador = 0;
+            for($i = 0; $i < $rowsShow; $i++) { ?>
+            <div class="flex justify-center">
+            <?php
+              for($j = 0; $j < $cols; $j++){
+                $pointer = $contador + $j; 
+                if ($results[$pointer]->client_name != ''){ ?>
+                <img
+                  src="<?php echo $url_uploads; ?>/<?php echo $results[$pointer]->client_logo; ?>"
+                  class="mx-8"
+                  alt="<?php echo $results[$pointer]->client_name; ?>"
+                />
+              <?php 
+                }
+              }
+              $contador = $contador + $cols; ?>
+            </div>
+            <?php }
           }
           ?>
-    </div>
-    <button
+    
+    <a href="<?php echo get_site_url(); ?>/nuestra-experiencia/"
       class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full"
     >
       Proyectos
-    </button>
+    </a>
   </div>
   <div class="btn-dropdown-post absolute w-full">
     <button class="nextSection mx-auto">

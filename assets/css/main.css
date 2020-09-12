@@ -16,6 +16,9 @@ h3 {
   font-family: "Bebas Neue", cursive;
   font-size: 2rem;
 }
+#search {
+  background: none;
+}
 .single-post img {
   margin: 0 auto !important;
 }
@@ -117,6 +120,17 @@ a[title="abrir"] {
 .separator-h-c-200 {
   background: url("img/h-separador-02.jpg") no-repeat center bottom;
 }
+.separator-anima::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #77bffa;
+  transition: width 0.3s;
+}
+.separator-anima:hover::after {
+  width: 100%;
+}
 .pilares p {
   font-weight: 300;
   background: url("img/h-separador-02.jpg") no-repeat left top;
@@ -124,4 +138,32 @@ a[title="abrir"] {
 }
 .pilares img {
   margin: 0 auto;
+}
+.btn-dropdown-post-2 {
+  bottom: 4%;
+}
+.contacto h4 {
+  font-size: 24px;
+  border-bottom: 2px solid #77bffa;
+  width: fit-content;
+  margin: 0 auto 1rem;
+}
+.contacto p,
+.contacto a {
+  font-weight: 300;
+  font-size: 20px;
+}
+.contacto .k-ubication {
+  background: url("img/markmap.jpg") no-repeat center top;
+  padding: 51px 0 0;
+}
+.contacto .k-phone,
+.contacto .k-mail {
+  padding: 65px 0 0;
+}
+.contacto .k-phone {
+  background: url("img/phone.jpg") no-repeat center top;
+}
+.contacto .k-mail {
+  background: url("img/email.jpg") no-repeat center top;
 }

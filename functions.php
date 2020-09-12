@@ -22,7 +22,6 @@ add_action('wp_enqueue_scripts', 'krnc_register_scripts');
 function krnc_theme_support(){
   add_theme_support('title-tag');
   add_theme_support('post-thumbnails');
-  add_theme_support('custom-logo');
 }
 add_action('after_setup_theme', 'krnc_theme_support');
 
@@ -233,4 +232,18 @@ function myplugin_inner_custom_box( $post ) {
 
 }
 
+function krnc_contact_sidebar(){
+  register_sidebar( 
+    array(
+        'name'          => 'Información de Contacto - Sidebar',
+        'id'            => 'contact-sidebar',
+        'description'   => 'Información que se muestra en la barra lateral',
+        'before_widget' => '<div class="flex flex-col font-light text-lg">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="uppercase">',
+        'after_title'   => '</h2>',
+    )
+  );
+}
+add_action('widgets_init', 'krnc_contact_sidebar');
 ?>
