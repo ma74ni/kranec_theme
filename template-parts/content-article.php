@@ -3,14 +3,11 @@
     <div class="blog-title text-center">
       <h1 class="text-5xl uppercase"><?php the_title(); ?></h1>
       <div class="text-xl font-light pb-8"><?php the_excerpt(); ?></div>
-      
-      <?php if(file_exists(krnc_first_image())){ ?>
       <img
         class="object-cover w-full"
         src="<?php echo krnc_first_image(); ?>"
         alt="<?php the_title(); ?>"
       />
-      <?php } ?>
       <div class="btn-dropdown-post absolute left-0 w-full">
         <img
           class="mx-auto"

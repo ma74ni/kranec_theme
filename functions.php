@@ -3,6 +3,7 @@ function krnc_register_styles() {
   $version = wp_get_theme()->get('Version');
   wp_enqueue_style('krnc_fullpage', 'https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.css', array(), '', 'all');
   wp_enqueue_style('krnc_tailwind', get_template_directory_uri() . '/css/style.css');
+  wp_enqueue_style('krnc_elder_carousel', get_template_directory_uri() . '/assets/css/dist/style.css');
   wp_enqueue_style('krnc_style', get_template_directory_uri() . '/style.css', array(), $version, 'all');
   wp_enqueue_style('krnc_main', get_template_directory_uri() . '/assets/css/main.css', array(), $version, 'all');
 }
@@ -15,9 +16,16 @@ function krnc_register_scripts() {
   /*wp_enqueue_script('krnc_vuejs', 'https://cdn.jsdelivr.net/npm/vue', array(), '', true);*/
   wp_enqueue_script('krnc_scrolloverflow', 'https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/vendors/scrolloverflow.min.js', array(), '', true);
   wp_enqueue_script('krnc_fullpage', 'https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.js', array(), '', true);
-  wp_enqueue_script('krnc_js', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0', true);
+  wp_enqueue_script('krnc_elder_carousel', get_template_directory_uri() . '/assets/js/dist/index.min.js', array(), '', true);
+  wp_enqueue_script('krnc_js', get_template_directory_uri() . '/assets/js/main.js', array('jquery','media-upload' ), '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'krnc_register_scripts');
+
+function krnc_register_admin_scripts() {
+  wp_enqueue_script('krnc_img_upload', get_template_directory_uri() . '/assets/js/admin.js', array('jquery','media-upload' ), '1.0', true);
+  wp_localize_script('krnc_img_upload', 'customUploads', array('imageData' => get_post_meta(get_the_ID(), 'data-custom-image', true)));
+}
+add_action('admin_enqueue_scripts', 'krnc_register_admin_scripts');
 
 function krnc_theme_support(){
   add_theme_support('title-tag');
@@ -154,7 +162,7 @@ function krnc_first_image() {
   $first_img = $matches[1][0];
 
   if(empty($first_img)) {
-    $first_img = "assets/images/default.png";
+    $first_img = get_template_directory_uri() . '/assets/images/default.png';
   }
   return $first_img;
 }
@@ -198,39 +206,63 @@ function krnc_create_portfolio_posttype() {
 }
 add_action('init', 'krnc_create_portfolio_posttype');
 
-function myplugin_add_custom_box() {
+function krnc_add_custom_box() {
 
     $screens = array('portfolio' );
 
     foreach ( $screens as $screen ) {
 
         add_meta_box(
-            'myplugin_sectionid',
-            __( 'Cliente', 'myplugin_textdomain' ),
-            'myplugin_inner_custom_box',
+            'image_metabox',
+            'Subir Logo Cliente',
+            'krnc_image_uploader',
             $screen
         );
     }
 }
-add_action( 'add_meta_boxes', 'myplugin_add_custom_box' );
+add_action( 'add_meta_boxes', 'krnc_add_custom_box' );
 
-function myplugin_inner_custom_box( $post ) {
+function krnc_image_uploader( $post ) {
 
   // Add an nonce field so we can check for it later.
-  wp_nonce_field( 'myplugin_inner_custom_box', 'myplugin_inner_custom_box_nonce' );
+  wp_nonce_field( 'krnc_image_uploader', 'krnc_image_uploader_nonce' );
 
   /*
    * Use get_post_meta() to retrieve an existing value
    * from the database and use the value for the form.
    */
   $value = get_post_meta( $post->ID, '_my_meta_value_key', true );
-
-  echo '<label for="myplugin_new_field">';
-       _e( "Subir logotipo", 'myplugin_textdomain' );
-  echo '</label> ';
-  echo '<input type="file" id="myplugin_new_field" name="myplugin_new_field" value="' . esc_attr( $value ) . '" size="25" />';
-
+    wp_nonce_field(basename(__FILE__), 'custom_image_nonce');
+  ?>
+    <div id="metabox-wrapper">
+      <img id="logo-tag">
+      <input type="hidden" name="data-custom-image" id="data-custom-image">
+      <input type="button" value="Añadir" id="btn-image-upload" class="button">
+      <input type="button" value="Eliminar" id="btn-image-delete" class="button">
+    </div>
+<?php
 }
+function krnc_save_custom_image($post_id) {
+  $is_autosave = wp_is_post_autosave($post_id);
+  $is_revision = wp_is_post_revision($post_id);
+  $is_valid_nonce = (isset($_POST['custom_image_nonce']) && wp_verify_nonce($_POST['custom_image_nonce'], basename(__FILE__)));
+  if($is_autosave || $is_revision || !is_valid_nonce) {
+    return;
+  }
+  if(isset($_POST['data-custom-image'])) {
+    $image_data = json_decode(stripslashes($_POST['data-custom-image']));
+    if(is_object($image_data[0])) {
+      $image_data = array(
+        'id' => intval($image_data[0] -> id), 
+        'src' => esc_url_raw($image_data[0] -> url)
+      );
+    } else {
+      $image_data = [];
+    }
+    update_post_meta($post_id, 'data-custom-image', $image_data);
+  }
+}
+add_action('save_post', 'krnc_save_custom_image');
 
 function krnc_contact_sidebar(){
   register_sidebar( 

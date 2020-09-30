@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
         isOpen: false,
         isShow: false,
         openTab: 1,
+        itemsCarousel: 4,
+        showInfo: 0,
+        openData: false,
+        open: false,
       };
     },
     methods: {},
@@ -28,6 +32,23 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       });
+      const infoProject = document.querySelectorAll(".title-project");
+      if (infoProject.length > 0) {
+        console.log(infoProject);
+        infoProject.forEach((item) => {
+          item.addEventListener("click", () => {
+            const buttonOpen = item.childNodes[0].childNodes[4];
+            const infoProject = item.childNodes[2];
+            if (buttonOpen.className != "circle-plus text-xl opened") {
+              buttonOpen.className = "circle-plus text-xl opened";
+              infoProject.className = "block content-project-block";
+            } else {
+              buttonOpen.className = "circle-plus text-xl closed";
+              infoProject.className = "hidden";
+            }
+          });
+        });
+      }
       const inicalSrc = document.getElementById("sandwich-icon").src;
       const seccitionsPage = new fullpage("#fullpage", {
         scrollOverflow: true,
@@ -51,6 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
             fullpage_api.moveSlideRight();
           }, 6000);
         },
+      });
+      const carousel = new ElderCarousel(".carousel-example", {
+        infinite: false,
       });
       const nextButton = document.querySelectorAll(".nextSection");
       nextButton.forEach((button) => {

@@ -15,11 +15,21 @@
         <div class="container mx-auto md:px-8 flex justify-between">
           <div class="flex items-center">
             <button @click="isOpen = !isOpen" class="btn-menu mr-4">
+              <?php 
+                $class_color_icon = 'text-k-blue-100';
+                $class_color_logo = 'text-k-blue-100';
+                if(is_front_page() || is_home()) {
+                  $class_color_icon = 'text-white';
+                } else if($post->ID == 33) {
+                  $class_color_icon = 'text-white';
+                  $class_color_logo = 'text-white';
+                }
+              ?>
               <svg
                 id="sandwich-icon"
                 width="26.22"
                 heigth="25.56"
-                class="fill-current inline-block <?php echo (is_front_page() || is_home()) ? 'text-white' : 'text-kblue-100' ?>"
+                class="fill-current inline-block <?php echo $class_color_icon; ?>"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 26.22 25.56"
               >
@@ -44,7 +54,7 @@
               <svg
                 width="140.37"
                 heigth="24"
-                class="fill-current text-kblue-100 inline-block"
+                class="fill-current <?php echo $class_color_logo; ?> inline-block"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 140.37 24"
               >

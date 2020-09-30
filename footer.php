@@ -1,6 +1,6 @@
 <?php
-          if(is_front_page() || is_page(18)){
-        ?>
+  if(is_front_page() || is_page(18) || $post->ID == 301){
+?>
 <div class="section">
   <div class="text-center mb-8">
     <h2 class="w-auto inline-block mx-auto separator-h-c-200">VISITA NUESTRO BLOG</h2>
