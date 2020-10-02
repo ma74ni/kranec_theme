@@ -11,7 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
         showInfo: 0,
         openData: false,
         open: false,
+        actionSearch: false,
+        search: "",
       };
+    },
+    created() {
+      let uri = new URL(window.location.href);
+      let params = new URLSearchParams(uri.search);
+      let searchedString = params.get("s");
+      this.search = searchedString;
     },
     methods: {},
     mounted() {
@@ -32,9 +40,24 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       });
+      const itemSearch = document.querySelectorAll(".result-item-search");
+      if (itemSearch.length > 0) {
+        itemSearch.forEach((item) => {
+          item.addEventListener("mouseover", () => {
+            const imageItem = item.childNodes[2].childNodes[0];
+            imageItem.className =
+              "attachment-post-thumbnail size-post-thumbnail wp-post-image selected";
+          });
+          item.addEventListener("mouseout", () => {
+            const imageItem = item.childNodes[2].childNodes[0];
+            imageItem.className =
+              "attachment-post-thumbnail size-post-thumbnail wp-post-image";
+          });
+        });
+      }
+
       const infoProject = document.querySelectorAll(".title-project");
       if (infoProject.length > 0) {
-        console.log(infoProject);
         infoProject.forEach((item) => {
           item.addEventListener("click", () => {
             const buttonOpen = item.childNodes[0].childNodes[4];

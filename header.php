@@ -235,7 +235,7 @@
         </ul>
         ', 'add_li_class' => 'py-2' ) ) ?>
         <div class="search pb-8">
-          <form action="http://localhost/wordpress/kranec/" method="get" class="w-full max-w-sm">
+          <form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="w-full max-w-sm">
             <div class="flex">
               <input type="text" name="s" id="search" value="" placeholder="BUSCAR" class="appearance-none block w-full text-white border py-2 px-4 leading-tight mr-2">
               <input type="image" alt="Search" src="<?php echo get_template_directory_uri(); ?>/assets/images/search_icon.svg"></div>

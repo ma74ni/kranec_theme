@@ -191,6 +191,29 @@ a[title="abrir"] {
   width: 1em;
   margin-left: -1em;
 }
+.search-image {
+  background: url("img/vertical-search-item.jpg") no-repeat right center;
+}
+.result-item-search:last-child .search-image {
+  background: none;
+}
+.search-image img {
+  margin: 0 auto;
+  object-fit: scale-down;
+  max-width: 238px;
+  border-width: 2px;
+  border-color: transparent;
+  transition: border-color 0.3s;
+}
+.search-image img.selected {
+  border-color: #202e4c;
+}
+.search-header-post {
+  width: fit-content;
+}
+.hovering img {
+  border-color: #202e4c;
+}
 /*
 animación botón +
 */
