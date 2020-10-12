@@ -1,6 +1,12 @@
 // tailwind.config.js
 module.exports = {
   theme: {
+    extend: {
+      inset: {
+        "11": "11%",
+        "4": "4%",
+      },
+    },
     fontFamily: {
       oswald: ["Oswald", "sans-serif"],
     },

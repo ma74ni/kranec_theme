@@ -16,6 +16,7 @@ function krnc_register_scripts() {
   /*wp_enqueue_script('krnc_vuejs', 'https://cdn.jsdelivr.net/npm/vue', array(), '', true);*/
   wp_enqueue_script('krnc_scrolloverflow', 'https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/vendors/scrolloverflow.min.js', array(), '', true);
   wp_enqueue_script('krnc_fullpage', 'https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.js', array(), '', true);
+  wp_enqueue_script('krnc_mailchimp', 'https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js', array(), '', true);
   wp_enqueue_script('krnc_elder_carousel', get_template_directory_uri() . '/assets/js/dist/index.min.js', array(), '', true);
   wp_enqueue_script('krnc_js', get_template_directory_uri() . '/assets/js/main.js', array('jquery','media-upload' ), '1.0', true);
 }

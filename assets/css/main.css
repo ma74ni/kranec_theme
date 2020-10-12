@@ -9,9 +9,7 @@ h2 {
   font-family: "Bebas Neue", cursive;
   font-size: 3rem;
 }
-p {
-  font-size: 1.875rem;
-}
+
 h3 {
   font-family: "Bebas Neue", cursive;
   font-size: 2rem;
@@ -28,6 +26,8 @@ h3 {
 }
 .fp-slidesNav ul li a span {
   background: #ffffff;
+}
+.text-intro {
 }
 .fp-slidesNav ul li a.active span {
   background: #77bffa;

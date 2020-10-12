@@ -13,6 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
         open: false,
         actionSearch: false,
         search: "",
+        FNAME: null,
+        errorFNAME: "",
+        CONAME: null,
+        errorCONAME: "",
+        EMAIL: null,
+        errorEMAIL: "",
+        LNAME: null,
+        errorLNAME: "",
       };
     },
     created() {
@@ -21,7 +29,31 @@ document.addEventListener("DOMContentLoaded", () => {
       let searchedString = params.get("s");
       this.search = searchedString;
     },
-    methods: {},
+    methods: {
+      checkForm: function(e) {
+        if (this.FNAME && this.LNAME && this.EMAIL && this.CONAME) {
+          return true;
+        }
+        this.errorCONAME = "";
+        this.errorEMAIL = "";
+        this.errorLNAME = "";
+        this.errorFNAME = "";
+
+        if (!this.FNAME) {
+          this.errorFNAME = "Obligatorio";
+        }
+        if (!this.CONAME) {
+          this.errorCONAME = "Obligatorio";
+        }
+        if (!this.EMAIL) {
+          this.errorEMAIL = "Obligatorio";
+        }
+        if (!this.LNAME) {
+          this.errorLNAME = "Obligatorio";
+        }
+        e.preventDefault();
+      },
+    },
     mounted() {
       document.addEventListener("keydown", (e) => {
         if (e.keyCode == 27 && this.isOpen) this.isOpen = false;

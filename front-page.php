@@ -18,9 +18,9 @@
     class="slide bg-no-repeat bg-cover bg-center"
     style="background-image: url('<?php echo $url_uploads; ?>/<?php echo $row->slide_image; ?>')"
   >
-    <div class=" w-1/3 mx-auto">
-      <h2 class="text-white"><?php echo $row->slide_title; ?></h2>
-      <p class="mt-8 mb-12"><?php echo $row->slide_subtitle; ?></p>
+    <div class="sm:w-3/5 mx-auto px-8">
+      <h2 class="text-white text-2xl sm:text-4xl"><?php echo $row->slide_title; ?></h2>
+      <p class="mt-8 mb-12 text-xl sm:text-2xl md:text-4xl"><?php echo $row->slide_subtitle; ?></p>
       <?php
               if($row->slide_button == 1) { ?>
       <button
@@ -44,7 +44,7 @@
   </div>
 </div>
 <div class="section">
-  <div class="container md:px-8 mx-auto my-40">
+  <div class="sm:container px-8 sm:mx-auto my-40">
     <?php
       the_content();
       ?>
@@ -63,37 +63,29 @@
 client_order FROM $table_client WHERE `client_status` = 1 ORDER BY
 `client_order`" ); 
   $rowsQuery = $wpdb->num_rows;
-  $cols = 6;
+  $cols = 7;
   $rowsShow =  ceil($rowsQuery / $cols);
   ?>
 <div class="section text-center">
-  <div class="container md:px-8 mx-auto">
+  <div class="px-8 mx-auto pb-8 mb-4">
     <div class="text-center mb-8">
       <h2 class="w-auto inline-block mx-auto separator-h-c-200">CLIENTES</h2>
     </div>
+    <div class="mb-4">
           <?php
-          if(!empty($results)) {
-            $contador = 0;
-            for($i = 0; $i < $rowsShow; $i++) { ?>
-            <div class="flex justify-center">
-            <?php
-              for($j = 0; $j < $cols; $j++){
-                $pointer = $contador + $j; 
-                if ($results[$pointer]->client_name != ''){ ?>
-                <img
-                  src="<?php echo $url_uploads; ?>/<?php echo $results[$pointer]->client_logo; ?>"
+          if(!empty($results)) { ?>
+            <div class="flex flex-wrap justify-center">
+            <?php for($i = 0; $i < $rowsQuery; $i++){?>
+               <img
+                  src="<?php echo $url_uploads; ?>/<?php echo $results[$i]->client_logo; ?>"
                   class="mx-8"
-                  alt="<?php echo $results[$pointer]->client_name; ?>"
+                  alt="<?php echo $results[$i]->client_name; ?>"
                 />
-              <?php 
-                }
-              }
-              $contador = $contador + $cols; ?>
+            <?php } ?>
             </div>
-            <?php }
-          }
+          <?php }
           ?>
-    
+    </div>
     <a href="<?php echo get_site_url(); ?>/nuestra-experiencia/"
       class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full"
     >

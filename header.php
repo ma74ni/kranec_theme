@@ -12,9 +12,9 @@
   <body>
     <div id="app">
       <header class="fixed w-full pt-10 z-10">
-        <div class="container mx-auto md:px-8 flex justify-between">
+        <div class="sm:container sm:mx-auto px-8 flex justify-between">
           <div class="flex items-center">
-            <button @click="isOpen = !isOpen" class="btn-menu mr-4">
+            <button @click="isOpen = !isOpen" class="btn-menu mr-4 focus:outline-none">
               <?php 
                 $class_color_icon = 'text-k-blue-100';
                 $class_color_logo = 'text-k-blue-100';
@@ -50,7 +50,7 @@
                 />
               </svg>
             </button>
-            <a href="">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
               <svg
                 width="140.37"
                 heigth="24"
@@ -216,7 +216,7 @@
         class="w-2/5 bg-blue-kranec px-8 py-8 transform top-0 left-0 w-64 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
         :class="isOpen ? 'translate-x-0' : '-translate-x-full'"
       >
-        <a href="" class="logo-nav-content"
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo-nav-content"
           ><img
             src="<?php echo get_template_directory_uri(); ?>/assets/images/logo_kranec_b.svg"
             alt=""
