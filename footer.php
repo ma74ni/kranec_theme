@@ -2,7 +2,7 @@
   if(is_front_page() || is_page(18) || $post->ID == 301){
 ?>
 <div class="section">
-  <div class="text-center mb-8">
+  <div class="text-center mt-24 sm:mt-0 mb-8">
     <h2 class="w-auto inline-block mx-auto separator-h-c-200">VISITA NUESTRO BLOG</h2>
   </div>
   <div class="container px-8 mx-auto">
