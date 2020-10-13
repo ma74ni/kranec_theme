@@ -11,13 +11,13 @@
 
   <body>
     <div id="app">
-      <header class="fixed w-full pt-10 z-10">
-        <div class="sm:container sm:mx-auto px-8 flex justify-between">
+      <header class="fixed w-full pt-2 sm:pt-10 z-10 bg-transparent header-menu">
+        <div class="sm:mx-auto px-8 flex flex-col-reverse sm:flex-row sm:justify-between">
           <div class="flex items-center">
             <button @click="isOpen = !isOpen" class="btn-menu mr-4 focus:outline-none">
               <?php 
-                $class_color_icon = 'text-k-blue-100';
-                $class_color_logo = 'text-k-blue-100';
+                $class_color_icon = 'text-kblue-100';
+                $class_color_logo = 'text-kblue-100';
                 if(is_front_page() || is_home()) {
                   $class_color_icon = 'text-white';
                 } else if($post->ID == 33) {
@@ -50,7 +50,7 @@
                 />
               </svg>
             </button>
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" id="logo-name">
               <svg
                 width="140.37"
                 heigth="24"
@@ -80,7 +80,7 @@
             </a>
           </div>
           <div>
-            <ul class="flex store-nav">
+            <ul class="flex store-nav justify-end">
               <li class="pr-4">
                 <a href=""
                   ><svg
@@ -213,7 +213,7 @@
         ></div>
       </div>
       <nav
-        class="w-2/5 bg-blue-kranec px-8 py-8 transform top-0 left-0 w-64 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
+        class="w-2/3 sm:w-2/5 bg-blue-kranec px-8 py-8 transform top-0 left-0 w-64 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
         :class="isOpen ? 'translate-x-0' : '-translate-x-full'"
       >
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo-nav-content"

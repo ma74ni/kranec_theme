@@ -44,7 +44,7 @@
           }
         ?>
 <footer class="section bg-kblue-200">
-  <div class="container  md:px-8 mx-auto">
+  <div class="container mt-24 sm:mt-20 px-8 mx-auto">
     <section class="mb-12">
       <div class="text-center mb-8">
         <h2 class="w-auto inline-block mx-auto separator-h-c-200 text-white">COMPRA NUESTROS PRODUCTOS EN LÍNEA</h2>

@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         errorEMAIL: "",
         LNAME: null,
         errorLNAME: "",
+        fixedNav: false,
       };
     },
     created() {
@@ -104,23 +105,34 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         });
       }
-      const inicalSrc = document.getElementById("sandwich-icon").src;
+      const logoName = document.querySelector("#logo-name svg");
+      const logoNameClass = logoName.className.baseVal;
+      const sandwichIcon = document.getElementById("sandwich-icon");
+      const sandwichIconClass = sandwichIcon.className.baseVal;
+      const headerNav = document.querySelector(".header-menu");
       const seccitionsPage = new fullpage("#fullpage", {
         scrollOverflow: true,
         verticalCentered: true,
         controlArrows: false,
         slidesNavigation: true,
         afterLoad: function(anchorLink, index) {
-          // last section loaded
-          /* let iconMenuSrc = document.getElementById("sandwich-icon").src;
-          const arraySrc = iconMenuSrc.split("/");
-          const imageNameUbication = arraySrc.length;
-          if (index.isLast && arraySrc[imageNameUbication - 1] == "nav_a.svg") {
-            const newSrc = iconMenuSrc.replace("nav_a.svg", "nav.svg");
-            document.getElementById("sandwich-icon").src = newSrc;
+          if (index.isLast) {
+            sandwichIcon.className.baseVal =
+              "fill-current inline-block text-white";
+            logoName.className.baseVal = "fill-current text-white inline-block";
           } else {
-            document.getElementById("sandwich-icon").src = inicalSrc;
-          } */
+            sandwichIcon.className.baseVal = sandwichIconClass;
+            logoName.className.baseVal = logoNameClass;
+          }
+        },
+        onLeave: function(origen, destination, direction) {
+          if (destination.index == 0) {
+            headerNav.className =
+              "fixed w-full pt-2 sm:pt-10 z-10 bg-transparent header-menu";
+          } else {
+            headerNav.className =
+              "fixed w-full py-2  sm:py-4 z-10 bg-kblue-100 bg-opacity-25 header-menu";
+          }
         },
         afterRender: function() {
           setInterval(function() {
