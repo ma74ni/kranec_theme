@@ -22,6 +22,26 @@ function krnc_register_scripts() {
 }
 add_action('wp_enqueue_scripts', 'krnc_register_scripts');
 
+function krnc_add_woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
+add_action( 'after_setup_theme', 'krnc_add_woocommerce_support' );
+
+//Remove WooCommerce Styles
+//add_filter( 'woocommerce_enqueue_styles', '__return_false' );
+
+//Remove Shop Title
+//add_filter('woocommerce_show_page_title', '__return_false' );
+
+add_theme_support( 'wc-product-gallery-zoom' );
+add_theme_support( 'wc-product-gallery-lightbox' );
+add_theme_support( 'wc-product-gallery-slider' );
+
+function krnc_woo_custom_breadrumb_home_url() {
+  return get_site_url() . '/tienda';
+}
+add_filter( 'woocommerce_breadcrumb_home_url', 'krnc_woo_custom_breadrumb_home_url' );
+
 function krnc_register_admin_scripts() {
   wp_enqueue_script('krnc_img_upload', get_template_directory_uri() . '/assets/js/admin.js', array('jquery','media-upload' ), '1.0', true);
   wp_localize_script('krnc_img_upload', 'customUploads', array('imageData' => get_post_meta(get_the_ID(), 'data-custom-image', true)));
@@ -247,7 +267,7 @@ function krnc_save_custom_image($post_id) {
   $is_autosave = wp_is_post_autosave($post_id);
   $is_revision = wp_is_post_revision($post_id);
   $is_valid_nonce = (isset($_POST['custom_image_nonce']) && wp_verify_nonce($_POST['custom_image_nonce'], basename(__FILE__)));
-  if($is_autosave || $is_revision || !is_valid_nonce) {
+  if($is_autosave || $is_revision || !$is_valid_nonce) {
     return;
   }
   if(isset($_POST['data-custom-image'])) {

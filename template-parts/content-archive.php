@@ -26,7 +26,7 @@
 </div>
 <div class="section">
   <div class="container mx-auto">
-    <div class="my-8">
+    <div class="mt-24 mb-8">
       <div class="text-center">
         <h2>Categorías</h2>
       </div>

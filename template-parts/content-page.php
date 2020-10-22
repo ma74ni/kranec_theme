@@ -1,5 +1,6 @@
 <?php
-   if($post->ID != 304 && $post->ID != 308) {?>
+//echo $post->ID;
+   if($post->ID != 304 && $post->ID != 308 && $post->ID != 341 && $post->ID != 342) {?>
 <div class="section">
   <div class="header-blog">
     <div
@@ -33,9 +34,10 @@
       <?php
     $principalPosts = new  WP_QUERY(array( 'post_type' =>
       'portfolio', 'orderby' => 'date', 'order' => 'ASC' )); if(
-      $principalPosts->have_posts() ) { while ( $principalPosts->have_posts() )
-      { $principalPosts->the_post(); $src = get_post_meta(get_the_ID(),
-      'data-custom-image', true); ?>
+      $principalPosts->have_posts() ) { 
+        while ( $principalPosts->have_posts() ){ 
+          $principalPosts->the_post(); 
+          $src = get_post_meta(get_the_ID(),'data-custom-image', true); ?>
       <div>
         <div class="box">
           <div
@@ -58,7 +60,7 @@
                 <div class="w-1/5"></div>
               </div>
               <div class="title-project py-4">
-                <div class="flex justify-center items-center">
+                <div class="flex flex-col sm:flex-row justify-center items-center">
                   <div class="w-1/5"></div>
                   <a
                     href="#"
@@ -236,6 +238,29 @@
   </div>
 </div>
 
+<?php } else if($post->ID == 341 || $post->ID == 342){ ?> 
+  <div class="section">
+    <div class="md:container md:mx-auto mt-24">
+    <?php
+    if($post->ID == 342) {
+    $args = array(
+      'delimiter' => '<span class="text-kskyblue-100"> > </span>',
+      'wrap_before' => '<nav class="text-gray-500" itemprop="breadcrumb">',
+      'wrap_after'  => '</nav>',
+      'home' => 'Tienda',
+    ); 
+    woocommerce_breadcrumb($args); 
+    } ?>
+    <?php 
+    if($post->ID == 341) { ?>
+      <h2 class="text-center separator-h-c-200 mb-8">Carrito de Compras</h2>
+    <?php } ?>
+      <div>
+      <?php the_content(); ?>
+      <?php /* echo do_shortcode('[best_selling_products category="categoria" limit="2"]'); */ ?>
+      </div>
+    </div>
+  </div>
 <?php } else {
   the_content(); 
   } ?>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="<?php bloginfo('charset'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <?php
@@ -9,7 +9,7 @@
   ?>
   </head>
 
-  <body>
+  <body <?php body_class(); ?>>
     <div id="app">
       <header class="fixed w-full pt-2 sm:pt-10 z-10 bg-transparent header-menu">
         <div class="sm:mx-auto px-8 flex flex-col-reverse sm:flex-row sm:justify-between">
@@ -117,7 +117,7 @@
                 ></a>
               </li>
               <li>
-                <a href=""
+                <a href="<?php echo wc_get_cart_url(); ?>"
                   ><svg
                     width="43.39"
                     heigth="43.39"
