@@ -3,32 +3,35 @@
   if(have_posts()){
     while(have_posts()){
       the_post();
-      $prefix = $wpdb->prefix;
-      $url_uploads = wp_get_upload_dir()["baseurl"];
-      $table_slide = $prefix . 'slide';
-      $table_client = $prefix . 'client';
-      $results = $wpdb->get_results( "SELECT * FROM $table_slide WHERE
-`slide_status` = 1" ); ?>
+      $categories = get_categories(
+          array(
+            'hide_empty' =>  0,
+            //'exclude'  =>  1,
+            //'name' => 'productos',
+            'parent' => 21,
+            'child_of' => 0,
+            'taxonomy'   =>  'product_cat' // mention taxonomy here. 
+          )
+      );
+      ?>
 <div class="section text-center">
   <?php
-            if(!empty($results)) {
-              foreach($results as $row){ 
-          ?>
+      if(!empty($categories)) {
+        $desc = '';
+        foreach($categories as $category) { 
+          $thumbnail_id = get_woocommerce_term_meta( $category->cat_ID, 'thumbnail_id', true ); 
+          $image = wp_get_attachment_url( $thumbnail_id );
+          $wc_cat_id = $category->term_id;
+          $desc = substr($category->description, 0, 200);
+    ?>
   <div
     class="slide bg-no-repeat bg-cover bg-center"
-    style="background-image: url('<?php echo $url_uploads; ?>/<?php echo $row->slide_image; ?>')"
+    style="background-image: url('<?php echo $image; ?>')"
   >
     <div class="sm:w-3/5 mx-auto px-8">
-      <h2 class="text-white text-2xl sm:text-4xl"><?php echo $row->slide_title; ?></h2>
-      <p class="mt-8 mb-12 text-xl sm:text-2xl md:text-4xl"><?php echo $row->slide_subtitle; ?></p>
-      <?php
-              if($row->slide_button == 1) { ?>
-      <button
-        class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full"
-      >
-        <?php echo $row->slide_button_text; ?>
-      </button>
-      <?php } ?>
+      <h2 class="text-white text-3xl md:text-4xl lg:text-5xl xl:text-6xl"><?php echo $category->name; ?></h2>
+      <p class="mt-8 mb-12 text-lg md:text-xl lg:text-2xl xl:text-3xl"><?php echo $desc; ?> ...</p>
+      <a href="<?php echo get_category_link($wc_cat_id); ?>" class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full">Ver más</a>
     </div>
   </div>
   <?php 
@@ -59,7 +62,10 @@
   </div>
 </div>
 <?php
-      $results = $wpdb->get_results( "SELECT client_name, client_logo,
+  $url_uploads = wp_get_upload_dir()["baseurl"];
+  $prefix = $wpdb->prefix;
+  $table_client = $prefix . 'client';
+  $results = $wpdb->get_results( "SELECT client_name, client_logo,
 client_order FROM $table_client WHERE `client_status` = 1 ORDER BY
 `client_order`" ); 
   $rowsQuery = $wpdb->num_rows;
@@ -68,7 +74,7 @@ client_order FROM $table_client WHERE `client_status` = 1 ORDER BY
   ?>
 <div class="section text-center">
   <div class="px-8 mx-auto pb-8 mb-4">
-    <div class="text-center mb-8">
+    <div class="text-center mb-8 mt-24 md:mt-0">
       <h2 class="w-auto inline-block mx-auto separator-h-c-200">CLIENTES</h2>
     </div>
     <div class="mb-4">
@@ -78,7 +84,7 @@ client_order FROM $table_client WHERE `client_status` = 1 ORDER BY
             <?php for($i = 0; $i < $rowsQuery; $i++){?>
                <img
                   src="<?php echo $url_uploads; ?>/<?php echo $results[$i]->client_logo; ?>"
-                  class="mx-8"
+                  class="mx-2 lg:mx-10"
                   alt="<?php echo $results[$i]->client_name; ?>"
                 />
             <?php } ?>

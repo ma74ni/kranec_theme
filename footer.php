@@ -17,11 +17,11 @@
           <?php the_post_thumbnail(); ?>
         </a>
         <h3 class="header-post uppercase">
-          <a class="text-2xl sm:text-4xl" href="<?php the_permalink(); ?>">
+          <a class="text-2xl" href="<?php the_permalink(); ?>">
             <?php the_title(); ?>
           </a>
         </h3>
-        <div class="text-2xl"><?php the_excerpt(); ?></div>
+        <div class="text-lg"><?php the_excerpt(); ?></div>
         <div class="my-8">
           <a class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-4 rounded-full"
             href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">Leer más</a>
@@ -93,13 +93,13 @@
         </div>
         <div class="sm:flex-1 sm:pl-4">
           <div class="w-full max-w-sm">
-            <div class="flex">
-              <div class="w-2/3 ">
+            <div class="flex sm:items-center">
+              <div class="w-2/3 sm:px-1">
                 <a href="<?php echo esc_url( home_url( '/subscribirse' ) ); ?>" class="w-full inline-block separator-anima text-white">Regístrate y recibe nuestro
                   newsletter</a>
               </div>
-              <div class="w-1/3 px-4">
-                <a href="<?php echo esc_url( home_url( '/subscribirse' ) ); ?>"><img class="mx-auto i-social"
+              <div class="w-1/3 sm:px-1">
+                <a href="<?php echo esc_url( home_url( '/subscribirse' ) ); ?>"><img class="mx-auto sm:mx-0 i-social"
                     src="<?php echo get_template_directory_uri(); ?>/assets/images/sobre.svg" alt="sobre"></a>
               </div>
             </div>

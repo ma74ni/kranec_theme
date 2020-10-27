@@ -14,6 +14,9 @@ h3 {
   font-family: "Bebas Neue", cursive;
   font-size: 2rem;
 }
+.list-store li a:hover .circle-nav-header {
+  stroke: #202e4c;
+}
 #search {
   background: none;
 }
@@ -135,7 +138,8 @@ a[title="abrir"] {
 .pilares p {
   font-weight: 300;
   background: url("img/h-separador-02.jpg") no-repeat left top;
-  margin-top: 20px;
+  margin-top: 5px;
+  padding: 10px 0 0;
 }
 .pilares img {
   margin: 0 auto;
@@ -182,6 +186,9 @@ a[title="abrir"] {
 }
 .k-align-round {
   top: 28%;
+}
+.separator-v {
+  background: url("img/v-separator.png") no-repeat center;
 }
 .content-project-block ul li::before {
   content: "\2022";
@@ -302,5 +309,10 @@ animación botón +
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@media screen and (max-width: 640px) {
+  .circle-nav-header {
+    stroke: #202e4c;
   }
 }

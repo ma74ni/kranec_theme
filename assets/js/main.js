@@ -61,16 +61,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const listMenu = document.querySelectorAll(".menu-item-has-children");
       listMenu.forEach((item) => {
-        item.addEventListener("click", () => {
+        item.addEventListener("mouseover", () => {
           const btnLink = item.childNodes[0];
           const subMenu = item.childNodes[2];
-          if (!btnLink.className) {
-            btnLink.className = "active";
-            subMenu.className = "sub-menu show";
-          } else {
-            btnLink.className = "";
-            subMenu.className = "sub-menu";
-          }
+          btnLink.className = "active";
+          subMenu.className = "sub-menu show";
+        });
+        item.addEventListener("mouseout", () => {
+          const btnLink = item.childNodes[0];
+          const subMenu = item.childNodes[2];
+          btnLink.className = "";
+          subMenu.className = "sub-menu";
         });
       });
       const itemSearch = document.querySelectorAll(".result-item-search");

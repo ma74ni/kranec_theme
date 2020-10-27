@@ -30,9 +30,14 @@
       <?php } ?>
         </ul>
         <?php }
-      } else {
-        woocommerce_content();
-      }
+      } else { ?>
+        <div class="flex">
+            <?php dynamic_sidebar('woo_categories'); ?>
+            <?php woocommerce_content(); ?>
+        
+        </div>
+          
+      <?php }
     ?>      
     </div>
   </div>

@@ -12,7 +12,7 @@
   <body <?php body_class(); ?>>
     <div id="app">
       <header class="fixed w-full pt-2 sm:pt-10 z-10 bg-transparent header-menu">
-        <div class="sm:mx-auto px-8 flex flex-col-reverse sm:flex-row sm:justify-between">
+        <div class="sm:mx-auto md:container px-8 flex flex-col-reverse sm:flex-row sm:justify-between">
           <div class="flex items-center">
             <button @click="isOpen = !isOpen" class="btn-menu mr-4 focus:outline-none">
               <?php 
@@ -80,7 +80,7 @@
             </a>
           </div>
           <div>
-            <ul class="flex store-nav justify-end">
+            <ul class="flex store-nav justify-end list-store">
               <li class="pr-4">
                 <a href=""
                   ><svg
@@ -91,10 +91,10 @@
                     viewBox="0 0 43.39 43.39"
                   >
                     <circle
-                      class="text-white"
-                      cx="21.69"
-                      cy="21.69"
-                      r="21.69"
+                      class="text-white stroke-2 circle-nav-header"
+                      cx="22"
+                      cy="22"
+                      r="20"
                     />
                     <path
                       class="text-kskyblue-100"
@@ -126,10 +126,10 @@
                     viewBox="0 0 43.39 43.39"
                   >
                     <circle
-                      class="text-white"
-                      cx="21.69"
-                      cy="21.69"
-                      r="21.69"
+                      class="text-white stroke-2 circle-nav-header"
+                      cx="22"
+                      cy="22"
+                      r="20"
                     />
                     <path
                       class="text-blue-300"

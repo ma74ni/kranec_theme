@@ -299,4 +299,19 @@ function krnc_contact_sidebar(){
   );
 }
 add_action('widgets_init', 'krnc_contact_sidebar');
+
+function krnc_woo_categories(){
+  register_sidebar( 
+    array(
+        'name'          => 'Mostrar Categorías',
+        'id'            => 'woo_categories',
+        'description'   => 'Muestra listado de categorías de woocommerce',
+        'before_widget' => '<div class="flex flex-col text-lg">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="uppercase">',
+        'after_title'   => '</h2>',
+    )
+  );
+}
+add_action('widgets_init', 'krnc_woo_categories');
 ?>
