@@ -286,6 +286,8 @@ function krnc_save_custom_image($post_id) {
 add_action('save_post', 'krnc_save_custom_image');
 
 function krnc_contact_sidebar(){
+  $contact_url = get_site_url() . '/contacto';
+  $before_title = '<h2 class="uppercase"><a href="' .$contact_url. '">';
   register_sidebar( 
     array(
         'name'          => 'Información de Contacto - Sidebar',
@@ -293,8 +295,8 @@ function krnc_contact_sidebar(){
         'description'   => 'Información que se muestra en la barra lateral',
         'before_widget' => '<div class="flex flex-col font-light text-lg">',
         'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="uppercase">',
-        'after_title'   => '</h2>',
+        'before_title'  => $before_title,
+        'after_title'   => '</a></h2>',
     )
   );
 }

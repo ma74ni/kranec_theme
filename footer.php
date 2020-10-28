@@ -51,13 +51,13 @@
       </div>
       <div class="flex justify-center">
         <div class="text-center px-4 py-2 m-2">
-          <img class="mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/proteccion_personal.jpg"
-            alt="">
-          <h4 class="text-white">Equipos de protección personal</h4>
+          <a href="<?php echo esc_url( home_url( '/categoria-producto/productos/equipos-de-proteccion-personal/' ) ); ?>"><img class="mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/proteccion_personal.jpg"
+            alt=""></a>
+          <h4 class="text-white"><a href="<?php echo esc_url( home_url( '/categoria-producto/productos/equipos-de-proteccion-personal/' ) ); ?>">Equipos de protección personal</a></h4>
         </div>
         <div class="text-center px-4 py-2 m-2">
-          <img class="mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/bioseguridad.jpg" alt="">
-          <h4 class="text-white">Insumos de bioseguridad</h4>
+          <a href="<?php echo esc_url( home_url( '/categoria-producto/productos/insumos-de-bioseguridad/' ) ); ?>"><img class="mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/bioseguridad.jpg" alt=""></a>
+          <h4 class="text-white"><a href="<?php echo esc_url( home_url( '/categoria-producto/productos/insumos-de-bioseguridad/' ) ); ?>">Insumos de bioseguridad</a></h4>
         </div>
       </div>
     </section>

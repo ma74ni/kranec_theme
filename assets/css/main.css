@@ -62,7 +62,7 @@ footer .logo-content img {
 
 .i-social {
   width: 32px;
-  height: 32px;
+  height: 32px !important;
 }
 .btn-dropdown {
   bottom: 3%;
@@ -82,6 +82,11 @@ footer .logo-content img {
   font-weight: 100;
   background: url("img/v-separator.jpg") no-repeat center bottom;
 }
+.separator-cat {
+  background-image: url("img/v-separator.jpg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
 .btn-whatsapp {
   bottom: 7%;
 }
@@ -96,6 +101,14 @@ footer .logo-content img {
 }
 .header-blog h1 {
   top: 40%;
+}
+.cat-item.active {
+  background-color: #205497;
+  color: #ffffff;
+}
+.cat-item:hover span,
+.cat-item.active span {
+  color: #77bffa;
 }
 .menu-item-has-children a:first-child {
   background-image: url("img/plus_less.png");
@@ -311,6 +324,39 @@ animación botón +
     transform: translateY(0);
   }
 }
+/*
+WOOCOMMERCE
+*/
+.products li {
+  text-align: center;
+}
+.products li a.add_to_cart_button {
+  border-radius: 9999px;
+  background-color: #77bffa;
+  color: #ffffff;
+}
+.products li:hover a.add_to_cart_button {
+  background-color: #202e4c;
+}
+.products li:hover a img {
+  border: 2px solid #202e4c !important;
+}
+.products li a.add_to_cart_button:hover {
+  color: #ffffff;
+}
+.products li.first {
+  padding-right: 2rem !important;
+  background: url("img/vertical-search-item.jpg") no-repeat right center;
+  margin-right: 0 !important;
+}
+.products li.last {
+  padding-left: 2rem !important;
+}
+.woocommerce ul.products li.product .onsale {
+  top: 24px;
+  background-color: #202e4c;
+}
+/*--------*/
 @media screen and (max-width: 640px) {
   .circle-nav-header {
     stroke: #202e4c;
