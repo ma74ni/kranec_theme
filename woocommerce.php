@@ -33,7 +33,83 @@
   </ul>
 </div>
 <?php }
-    } else {
+  } else if(is_product()){
+     //$attachment_ids = $product->get_gallery_image_ids();
+    //print_r ($attachment_ids);
+      $product = wc_get_product();
+      $id = $product->get_id();
+      $price = $product->price;
+      $price_values = explode(".", $price);
+      $price_int = $price_values[0];
+      $price_dec = $price_values[1];
+  ?>
+    <div class="section">
+      <?php 
+      //echo wp_get_attachment_image(396);
+      $images_product = $product->gallery_image_ids;
+      
+      //echo $product;
+      //print_r ($product->gallery_image_ids);
+      ?>
+      <div class="flex px-8 sm:mx-auto sm:container mt-24">
+        <div class="w-3/4">
+          <div class="flex justify-around">
+          <?php 
+          foreach ($images_product as $image_product) { ?>
+            <div>
+              <img class="border-solid border-2 border-kblue-100" src="<?php echo wp_get_attachment_url( $image_product ); ?>" alt="<?php echo $product->slug . '_' . $image_product; ?>">
+            </div>
+          <?php } ?>
+          </div>
+        </div>
+        <div class="w-1/4">
+            <div class="title-prod pb-2">
+              <h3 class="text-center text-2xl"><?php echo $product->name; ?></h3>
+            </div>
+            <div class="flex font-medium w-2/3 mx-auto my-8">
+              <div>
+                <p class="text-3xl">USD $</p>
+              </div>
+              <div>
+                <p class="text-6xl text-center px-2"><?php echo $price_int; ?></p> 
+              </div>
+              <div>
+                <p class="text-2xl border-b-2 border-kskyblue-100 px-2"><?php echo $price_dec ? $price_dec : '00' ?> </p>
+              </div>
+            </div>
+            <div class="mx-auto product-desc border-t border-kskyblue-100 mb-8">
+              <?php print($product->description); ?>
+            </div>
+            <div class="flex mb-4">
+              <div class="w-2/3">
+                <p class="rounded-full border border-kskyblue-100 text-center mr-4 py-2 font-medium text-kblue-100 text-opacity-50">Cantidad</p>
+              </div>
+              <div class="w-1/3">
+                <input class="appearance-none w-full rounded-full border border-kskyblue-100 py-2 font-medium focus:outline-none text-center text-kblue-100 text-opacity-50" type="number" name="quantity-prod" id="quantity-prod" v-model="quantity">
+              </div>
+            </div>
+            <div class="mb-8">
+              <?php 
+              $aux = '[add_to_cart_url id="'. $id .'" sku="'. $product->sku .'"]';
+              $url_cart = do_shortcode($aux);
+              //do_action( 'woocommerce_after_shop_loop_item' ); ?>
+              <a href="<?php echo $url_cart; ?>" :data-quantity="quantity" data-product_id="<?php echo $id; ?>" data-product_sku="<?php echo $product->sku; ?>" aria-label="Añade “<?php echo $product->name; ?>” a tu carrito" rel="nofollow" class="bg-kskyblue-100 block w-full text-center hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full product_type_simple add_to_cart_button ajax_add_to_cart">Añadir al carrito</a>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="sm:w-2/3 sm:mx-auto mt-24">
+    <div class="text-center mb-8 mt-24 md:mt-0">
+      <h2 class="w-auto inline-block mx-auto separator-h-c-200">PRODUCTOS MÁS BUSCADOS</h2>
+    </div>
+      <?php
+        $aux = '[products best_selling="true" columns="3" limit="3"]';
+        echo do_shortcode($aux);
+      ?>
+  </div>
+    </div>
+    <?php } else {
       $terms_post = get_the_terms( $post->cat_ID , 'product_cat' ); 
       $cat = $wp_query->get_queried_object(); 
       $title_page = $cat->name; 
@@ -114,7 +190,7 @@
               </ul>
             </div>
             <div class="w-2/3 px-8">
-              <div v-if="showProd == 0" class="overflow-y-auto h-screen">
+              <div v-if="showProd == 0" class="overflow-y-auto h-2xl">
                   <?php
                     $aux = '[products category="'.$cat_slug . '" columns="2"]';
                     echo do_shortcode($aux);
@@ -124,7 +200,6 @@
                 foreach($categories as $category) {
                   $cat_slug = $category->slug;
                 ?>
-              
               <div :class="{ block: showProd == <?php echo $category->term_id; ?>, hidden: showProd != <?php echo $category->term_id; ?> }">
                 <div class="text-center flex w-1/3 mx-auto justify-center">
                   <a href="#" class="uppercase font-bebas">Más información</a>
@@ -153,13 +228,16 @@
         <?php } 
       } 
   ?>
+  <div class="sm:w-2/3 sm:mx-auto">
+    <div class="text-center mb-8 mt-24 md:mt-0">
+      <h2 class="w-auto inline-block mx-auto separator-h-c-200">PRODUCTOS MÁS BUSCADOS</h2>
+    </div>
+      <?php
+        $aux = '[products best_selling="true" columns="3" limit="3"]';
+        echo do_shortcode($aux);
+      ?>
+  </div>
 </div>
-
-<!-- <div class="">
-            <?php //dynamic_sidebar('woo_categories'); ?>
-            <?php //woocommerce_content(); ?>
-        </div> -->
-
 <?php }
     ?>
 <?php get_footer(); ?>

@@ -23,6 +23,7 @@ function krnc_register_scripts() {
 add_action('wp_enqueue_scripts', 'krnc_register_scripts');
 
 function krnc_add_woocommerce_support() {
+  global $product;
     add_theme_support( 'woocommerce' );
 }
 add_action( 'after_setup_theme', 'krnc_add_woocommerce_support' );

@@ -344,17 +344,32 @@ WOOCOMMERCE
 .products li a.add_to_cart_button:hover {
   color: #ffffff;
 }
-.products li.first {
-  padding-right: 2rem !important;
+.products li:last-child,
+.products li.last {
+  background: none !important;
+}
+.products li {
+  padding: 0 2rem !important;
   background: url("img/vertical-search-item.jpg") no-repeat right center;
   margin-right: 0 !important;
-}
-.products li.last {
-  padding-left: 2rem !important;
 }
 .woocommerce ul.products li.product .onsale {
   top: 24px;
   background-color: #202e4c;
+}
+.title-prod {
+  background: url("img/h_separator_prod.jpg") no-repeat bottom center;
+}
+.product-desc a {
+  padding: 0 2rem;
+}
+.product-desc ul {
+  padding: 0 2.5rem;
+  border-bottom: 1px solid #77bffa;
+}
+a.added_to_cart {
+  display: block !important;
+  text-align: center;
 }
 /*--------*/
 @media screen and (max-width: 640px) {

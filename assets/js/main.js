@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         errorLNAME: "",
         fixedNav: false,
         showProd: 0,
+        quantity: 1,
       };
     },
     created() {

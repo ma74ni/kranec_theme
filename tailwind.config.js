@@ -7,6 +7,13 @@ module.exports = {
         "4": "4%",
       },
     },
+    height: {
+      sm: "8px",
+      md: "16px",
+      lg: "24px",
+      xl: "48px",
+      "2xl": "550px",
+    },
     fontFamily: {
       oswald: ["Oswald", "sans-serif"],
       bebas: ["Bebas Neue", "cursive"],
