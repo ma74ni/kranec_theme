@@ -43,6 +43,113 @@ function krnc_woo_custom_breadrumb_home_url() {
 }
 add_filter( 'woocommerce_breadcrumb_home_url', 'krnc_woo_custom_breadrumb_home_url' );
 
+function krnc_add_reception_input($checkout){
+  woocommerce_form_field('shipping_from', array(
+    'type' => 'time',
+    'class' => array('form-row-first'),
+    'label' => 'desde'
+    ), $checkout->get_value('shipping_from')
+  );
+  woocommerce_form_field('shipping_to', array(
+    'type' => 'time',
+    'class' => array('form-row-last'),
+    'label' => 'hasta'
+    ), $checkout->get_value('shipping_to')
+  );
+}
+add_action('woocommerce_after_checkout_shipping_form', 'krnc_add_reception_input');
+
+function krnc_edit_checkout_fields($fields){
+    $fields['billing']['billing_first_name'] = array(
+      'priority' => 10,
+      'placeholder' => 'Nombres',
+      'label' => '',
+      'class' => array('form-row-first'),
+    );
+    $fields['billing']['billing_last_name'] = array(
+      'priority' => 20,
+      'placeholder' => 'Apellidos',
+      'label' => '',
+      'class' => array('form-row-last', 'pb-8'),
+    );
+    $fields['billing']['billing_id'] = array(
+      'placeholder' => 'Identificación',
+      'priority' => 30,
+      'class' => array('form-row-first'), // un array puede ser la clase 'form-row-wide', 'form-row-first', 'form-row-last'
+      'required' => true
+    );
+    $fields['billing']['billing_phone'] = array(
+      'priority' => 40,
+      'placeholder' => 'Teléfono Celular',
+      'label' => '',
+      'class' => array('form-row-last'),
+    );
+    $fields['billing']['billing_email'] = array(
+      'priority' => 50,
+      'placeholder' => 'Correo Electrónico',
+      'label' => '',
+      'required' => true,
+      'class' => array('form-row-wide'),
+    );
+    unset($fields['billing']['billing_city']);
+    unset($fields['billing']['billing_address_1']);
+    unset($fields['billing']['billing_address_2']);
+    unset($fields['billing']['billing_postcode']);
+    unset($fields['billing']['billing_country']);
+    unset($fields['billing']['billing_state']);
+    unset($fields['billing']['billing_company']);
+
+    $fields['shipping']['shipping_address_1'] = array(
+      'priority' => 10,
+      'placeholder' => 'Calle Principal',
+      'label' => '',
+      'required' => true,
+      'class' => array('form-row-first'),
+    );
+    $fields['shipping']['shipping_number_address'] = array(
+      'priority' => 20,
+      'placeholder' => 'Nro. de Casa',
+      'label' => '',
+      'required' => true,
+      'class' => array('form-row-last'),
+    );
+    $fields['shipping']['shipping_address_2'] = array(
+      'priority' => 30,
+      'placeholder' => 'Calle Secundaria',
+      'label' => '',
+      'required' => true,
+      'class' => array('form-row-first'),
+    );
+    $fields['shipping']['shipping_postcode'] = array(
+      'priority' => 40,
+      'placeholder' => 'Código Postal',
+      'label' => '',
+      'required' => true,
+      'class' => array('form-row-last'),
+    );
+    $fields['shipping']['shipping_city'] = array(
+      'priority' => 50,
+      'placeholder' => 'Ciudad',
+      'label' => '',
+      'required' => true,
+      'class' => array('form-row-wide'),
+    );
+    unset($fields['shipping']['shipping_state']);
+    unset($fields['shipping']['shipping_first_name']);
+    unset($fields['shipping']['shipping_last_name']);
+    unset($fields['shipping']['shipping_company']);
+    unset($fields['shipping']['shipping_country']);
+
+    $fields['order']['order_comments'] = array(
+      'type' => 'textarea',
+      'placeholder' => 'Observaciones adicionales',
+      'label' => '',
+    );
+
+     return $fields;
+}
+add_filter('woocommerce_checkout_fields','krnc_edit_checkout_fields');
+
 function krnc_register_admin_scripts() {
   wp_enqueue_script('krnc_img_upload', get_template_directory_uri() . '/assets/js/admin.js', array('jquery','media-upload' ), '1.0', true);
   wp_localize_script('krnc_img_upload', 'customUploads', array('imageData' => get_post_meta(get_the_ID(), 'data-custom-image', true)));

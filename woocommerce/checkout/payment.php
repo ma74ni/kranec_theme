@@ -48,11 +48,17 @@ if ( ! is_ajax() ) {
 
 		<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 
-		<?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // @codingStandardsIgnoreLine ?>
-
 		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 
 		<?php wp_nonce_field( 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce' ); ?>
+	</div>
+	<div class="flex justify-between my-12">
+		<div class="w-1/2">
+			<a href="<?php echo wc_get_cart_url(); ?>" class="font-bebas text-xl"><span class="inline-block align-middle"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/left_chev.png" alt=""></span> Volver al Carrito</a>
+		</div>
+		<div class="w-1/2 text-right">
+			<?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="font-bebas text-xl" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">Pagar <span class="inline-block align-middle"><img src="'. get_template_directory_uri().'/assets/images/right_chev.png" alt=""></span></button>' ); // @codingStandardsIgnoreLine ?>
+		</div>
 	</div>
 </div>
 <?php

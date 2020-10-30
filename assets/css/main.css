@@ -374,6 +374,33 @@ a.added_to_cart {
 .woocommerce a.remove:hover {
   background: none !important;
 }
+.woocommerce-billing-fields input[type="text"],
+.woocommerce-shipping-fields input[type="text"],
+.woocommerce-hours-fields input {
+  border: 1px solid #77bffa;
+  border-radius: 9999px;
+  text-align: center;
+  padding: 0.75rem 0;
+}
+.woocommerce-additional-fields textarea {
+  border: 1px solid #77bffa;
+  border-radius: 0.5rem;
+  text-align: center;
+  height: 112px !important;
+}
+.woocommerce-billing-fields .form-row,
+.woocommerce-shipping-fields .form-row {
+  padding-bottom: 1rem !important;
+}
+.woocommerce-hours-fields label {
+  text-align: center;
+}
+.woocommerce-hours-fields label span {
+  display: none;
+}
+.woocommerce-checkout #payment {
+  background-color: #ffffff;
+}
 /*--------*/
 @media screen and (max-width: 640px) {
   .circle-nav-header {
