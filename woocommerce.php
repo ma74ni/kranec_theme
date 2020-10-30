@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 <?php
-  if(is_product_category(21) && !is_shop() && !is_product()) {
+echo is_cart();
+  if(is_product_category(21) && !is_shop() && !is_product() && !is_cart()) {
     $categories = get_categories(
       array(
         'hide_empty' =>0, 
@@ -33,7 +34,7 @@
   </ul>
 </div>
 <?php }
-  } else if(is_product()){
+} else if(is_product()){
      //$attachment_ids = $product->get_gallery_image_ids();
     //print_r ($attachment_ids);
       $product = wc_get_product();

@@ -1,6 +1,6 @@
 <?php
 //echo $post->ID;
-   if($post->ID != 304 && $post->ID != 308 && $post->ID != 341 && $post->ID != 342) {?>
+   if($post->ID != 304 && $post->ID != 308 && !is_checkout() && !is_cart()) {?>
 <div class="section">
   <div class="header-blog">
     <div
@@ -238,11 +238,11 @@
   </div>
 </div>
 
-<?php } else if($post->ID == 341 || $post->ID == 342){ ?> 
+<?php } else if(is_cart() || is_checkout()){ ?> 
   <div class="section">
     <div class="md:container md:mx-auto mt-24">
     <?php
-    if($post->ID == 342) {
+    if(is_checkout()) {
     $args = array(
       'delimiter' => '<span class="text-kskyblue-100"> > </span>',
       'wrap_before' => '<nav class="text-gray-500" itemprop="breadcrumb">',
@@ -252,7 +252,7 @@
     woocommerce_breadcrumb($args); 
     } ?>
     <?php 
-    if($post->ID == 341) { ?>
+    if(is_cart()) { ?>
       <h2 class="text-center separator-h-c-200 mb-8">Carrito de Compras</h2>
     <?php } ?>
       <div>
