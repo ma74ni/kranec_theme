@@ -1,7 +1,8 @@
 <?php get_header(); ?>
 <?php
 echo is_cart();
-  if(is_product_category(21) && !is_shop() && !is_product() && !is_cart()) {
+  //if(is_product_category(21) && !is_shop() && !is_product() && !is_cart()) {
+  if(is_shop()) {
     $categories = get_categories(
       array(
         'hide_empty' =>0, 

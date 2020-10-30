@@ -20,9 +20,12 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <div class="woocommerce-shipping-fields w-2/3 mx-auto">
 	<?php if ( true === WC()->cart->needs_shipping_address() ) : ?>
-		<h3 id="ship-to-different-address" class="text-center separator-h-c-200 mb-8">Datos de Envío</h3>
+		<h3 id="ship-to-different-address" class="text-center separator-h-c-200 mb-8">
+			Datos de envío
+				<input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox hidden" <?php checked( apply_filters( 'woocommerce_ship_to_different_address_checked', 'shipping' === get_option( 'woocommerce_ship_to_destination' ) ? 1 : 0 ), 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" /></label>
+		</h3>
 
-		<div class="shipping_address">
+		<div class="shipping_address h-auto ">
 			<?php do_action( 'woocommerce_before_checkout_shipping_form', $checkout ); ?>
 
 			<div class="woocommerce-shipping-fields__field-wrapper">
@@ -34,7 +37,6 @@ defined( 'ABSPATH' ) || exit;
 				}
 				?>
 			</div>
-
 		</div>
 
 	<?php endif; ?>

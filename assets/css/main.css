@@ -401,6 +401,10 @@ a.added_to_cart {
 .woocommerce-checkout #payment {
   background-color: #ffffff;
 }
+.shipping_address {
+  overflow: inherit !important;
+  height: auto !important;
+}
 /*--------*/
 @media screen and (max-width: 640px) {
   .circle-nav-header {
