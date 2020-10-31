@@ -39,10 +39,12 @@ if ( $show_downloads ) {
 	);
 }
 ?>
-<section class="woocommerce-order-details">
-	<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
+<section class="w-3/5 px-8 mx-auto mb-16">
 
-	<h2 class="woocommerce-order-details__title"><?php esc_html_e( 'Order details', 'woocommerce' ); ?></h2>
+	<div class="mb-8 text-center">
+		<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
+		<h2 class="woocommerce-order-details__title separator-h-c-200"><?php esc_html_e( 'Order details', 'woocommerce' ); ?></h2>
+	</div>
 
 	<table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
 
