@@ -6,14 +6,11 @@ module.exports = {
         "11": "11%",
         "4": "4%",
       },
+      height: {
+        "2xl": "550px",
+      },
     },
-    height: {
-      sm: "8px",
-      md: "16px",
-      lg: "24px",
-      xl: "48px",
-      "2xl": "550px",
-    },
+
     fontFamily: {
       oswald: ["Oswald", "sans-serif"],
       bebas: ["Bebas Neue", "cursive"],

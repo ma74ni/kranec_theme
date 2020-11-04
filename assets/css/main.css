@@ -203,7 +203,8 @@ a[title="abrir"] {
 .separator-v {
   background: url("img/v-separator.png") no-repeat center;
 }
-.content-project-block ul li::before {
+.content-project-block ul li::before,
+.items-products li::before {
   content: "\2022";
   color: #77bffa;
   font-weight: bold;
@@ -233,6 +234,12 @@ a[title="abrir"] {
 }
 .hovering img {
   border-color: #202e4c;
+}
+.dropdown-info {
+  display: none;
+}
+.open .dropdown-info {
+  display: block;
 }
 /*
 animación botón +

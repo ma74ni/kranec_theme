@@ -25,7 +25,4 @@
       the_content();
     ?>
   </div>
-  <div class="text-center my-12 mx-auto">
-    <h2>Puedes ver estros productos en nuestra tienda</h2>
-  </div>
 </div>

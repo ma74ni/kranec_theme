@@ -22,6 +22,8 @@ function krnc_register_scripts() {
 }
 add_action('wp_enqueue_scripts', 'krnc_register_scripts');
 
+add_post_type_support( 'page', 'excerpt' );
+
 function krnc_add_woocommerce_support() {
   global $product;
     add_theme_support( 'woocommerce' );
@@ -302,7 +304,7 @@ $content = preg_replace("/<img[^>]+\>/i", "", $content, 1);
 } return $content;
 }
 add_filter('the_content', 'krnc_remove_first_image');
-
+/*categoría portafolio*/
 function krnc_create_portfolio_taxonomy() {
   register_taxonomy(
     'portfolio-taxonomy',
@@ -350,7 +352,7 @@ function krnc_add_custom_box() {
     }
 }
 add_action( 'add_meta_boxes', 'krnc_add_custom_box' );
-
+/* fin categoría portafolio */
 function krnc_image_uploader( $post ) {
 
   // Add an nonce field so we can check for it later.

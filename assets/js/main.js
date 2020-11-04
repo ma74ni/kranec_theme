@@ -1,6 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
   new Vue({
     el: "#app",
+    ready: function() {
+      var self = this;
+      window.addEventListener(
+        "click",
+        function(e) {
+          if (!e.target.parentNode.classList.contains("info-toggle")) {
+            self.close();
+          }
+        },
+        false
+      );
+    },
     data() {
       return {
         message: "Hola desde Vue",
@@ -24,6 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
         fixedNav: false,
         showProd: 0,
         quantity: 1,
+        ok: true,
+        dropDowns: {
+          s_p_colectiva: { isOpen: false },
+          e_p_colectiva: { isOpen: false },
+          g_torre: { isOpen: false },
+          a_e_cremallera: { isOpen: false },
+          e_verticales: { isOpen: false },
+          e_horizontales: { isOpen: false },
+        },
       };
     },
     created() {
@@ -33,6 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
       this.search = searchedString;
     },
     methods: {
+      toggle: function(dropdownName) {
+        //alert(dropdownName);
+        this.dropDowns[dropdownName].isOpen = !this.dropDowns[dropdownName]
+          .isOpen;
+      },
       checkForm: function(e) {
         if (this.FNAME && this.LNAME && this.EMAIL && this.CONAME) {
           return true;
@@ -114,6 +140,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const sandwichIconClass = sandwichIcon.className.baseVal;
       const headerNav = document.querySelector(".header-menu");
       const seccitionsPage = new fullpage("#fullpage", {
+        anchors: [
+          "firstPage",
+          "secondPage",
+          "thirdPage",
+          "fourthPage",
+          "fifthPage",
+          "sixthPage",
+        ],
         scrollOverflow: true,
         verticalCentered: true,
         controlArrows: false,
