@@ -1,34 +1,22 @@
 <?php get_header(); ?>
 <?php
-echo is_cart();
-  //if(is_product_category(21) && !is_shop() && !is_product() && !is_cart()) {
   if(is_shop()) {
-    $categories = get_categories(
-      array(
-        'hide_empty' =>0, 
-        //'exclude' => 1, 
-        //'name' => 'productos', 
-        'parent' => 21, 
-        'child_of' => 0,
-        'taxonomy' => 'product_cat'
-        )
-      ); 
-    if(!empty($categories)) { ?>
+    $table_name = 'wp_krnc_slide';
+      $results = $wpdb->get_results( "SELECT * FROM $table_name WHERE `slide_status` = 1 ORDER BY `slide_order` ASC"  );
+      if(!empty($results)) { ?>
 <div class="section">
   <ul class="flex flex-col">
     <?php
-    foreach($categories as $category) { 
-      $thumbnail_id = get_woocommerce_term_meta( $category->cat_ID, 'thumbnail_id', true ); 
-      $image = wp_get_attachment_url( $thumbnail_id );
-      $wc_cat_id = $category->term_id; ?>
+    $url_uploads = wp_get_upload_dir()["baseurl"];
+    foreach($results as $row) { ?>
     <li
       class="text-center py-48 bg-cover bg-top bg-kblue-100"
-      style="background-image:linear-gradient( rgba(32, 46, 76, 0.2), rgba(32, 46, 76, 0.2) ), url('<?php echo $image; ?>');"
+      style="background-image:linear-gradient( rgba(32, 46, 76, 0.2), rgba(32, 46, 76, 0.2) ), url('<?php echo $url_uploads; ?>/<?php echo $row->slide_image; ?>');"
     >
       <a
         class="inline-block px-8 text-white uppercase text-3xl"
-        href="<?php echo get_category_link($wc_cat_id); ?>"
-        ><?php echo $category->name; ?></a
+        href="<?php echo get_site_url().$row->slide_link; ?>"
+        ><?php echo $row->slide_title; ?></a
       >
     </li>
   <?php } ?>
@@ -36,8 +24,6 @@ echo is_cart();
 </div>
 <?php }
 } else if(is_product()){
-     //$attachment_ids = $product->get_gallery_image_ids();
-    //print_r ($attachment_ids);
       $product = wc_get_product();
       $id = $product->get_id();
       $price = $product->price;

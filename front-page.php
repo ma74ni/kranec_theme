@@ -8,8 +8,8 @@
 <div class="section text-center">
   <?php
             if(!empty($results)) {
+              $url_uploads = wp_get_upload_dir()["baseurl"];
               foreach($results as $row){
-                $url_uploads = wp_get_upload_dir()["baseurl"];
           ?>
   <div
     class="slide bg-no-repeat bg-cover bg-center"
