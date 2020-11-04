@@ -60,9 +60,11 @@
               <?php }
               }?>
             </ul>
+            <?php if($post->ID != 14){ ?>
             <div class="mt-10 pb-8">
               <a class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full" href="#quote" v-on:click="ok = !ok">Cotizar</a>
             </div>
+            <?php } ?>
           </div>
         </div>
       <?php }
@@ -70,6 +72,7 @@
       ?>
   </div>
 </div>
+<?php if($post->ID != 14){ ?>
 <div id="quote" class="section">
   <h2 class="text-3xl text-center separator-cat">Quiero realizar una cotización</h2>
   <p class="text-center w-2/3 text-lg font-light mx-auto my-4">
@@ -96,3 +99,4 @@
     </form>
   </div>
 </div>
+<?php } ?>

@@ -1,5 +1,5 @@
 <?php
-  if(is_front_page() || is_page(18) || $post->ID == 301){
+  if(is_front_page() || is_page(18) || $post->ID == 301 || $post->ID == 14){
 ?>
 <div class="section">
   <div class="text-center mt-24 sm:mt-0 mb-8">
