@@ -3,35 +3,25 @@
   if(have_posts()){
     while(have_posts()){
       the_post();
-      $categories = get_categories(
-          array(
-            'hide_empty' =>  0,
-            //'exclude'  =>  1,
-            //'name' => 'productos',
-            'parent' => 21,
-            'child_of' => 0,
-            'taxonomy'   =>  'product_cat' // mention taxonomy here. 
-          )
-      );
-      ?>
+      $table_name = 'wp_krnc_slide';
+      $results = $wpdb->get_results( "SELECT * FROM $table_name WHERE `slide_status` = 1 ORDER BY `slide_order` ASC"  ); ?>
 <div class="section text-center">
   <?php
-      if(!empty($categories)) {
-        $desc = '';
-        foreach($categories as $category) { 
-          $thumbnail_id = get_woocommerce_term_meta( $category->cat_ID, 'thumbnail_id', true ); 
-          $image = wp_get_attachment_url( $thumbnail_id );
-          $wc_cat_id = $category->term_id;
-          $desc = substr($category->description, 0, 200);
-    ?>
+            if(!empty($results)) {
+              foreach($results as $row){
+                $url_uploads = wp_get_upload_dir()["baseurl"];
+          ?>
   <div
     class="slide bg-no-repeat bg-cover bg-center"
-    style="background-image: url('<?php echo $image; ?>')"
+    style="background-image: url('<?php echo $url_uploads; ?>/<?php echo $row->slide_image; ?>')"
   >
     <div class="sm:w-3/5 mx-auto px-8">
-      <h2 class="text-white text-3xl md:text-4xl lg:text-5xl xl:text-6xl"><?php echo $category->name; ?></h2>
-      <p class="mt-8 mb-12 text-lg md:text-xl lg:text-2xl xl:text-3xl"><?php echo $desc; ?> ...</p>
-      <a href="<?php echo get_category_link($wc_cat_id); ?>" class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full">Ver más</a>
+      <h2 class="text-white text-3xl md:text-4xl lg:text-5xl xl:text-6xl"><?php echo $row->slide_title; ?></h2>
+      <p class="mt-8 mb-12 text-lg md:text-xl lg:text-2xl xl:text-3xl"><?php echo $row->slide_subtitle; ?></p>
+      <?php
+      if($row->slide_button == 1) { ?>
+       <a href="<?php echo get_site_url().$row->slide_link; ?>" class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full"><?php echo $row->slide_button_text; ?></a>
+      <?php } ?>
     </div>
   </div>
   <?php 
