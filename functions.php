@@ -176,6 +176,25 @@ function krnc_save_name_fields( $customer_id ) {
 }
 add_action( 'woocommerce_created_customer', 'krnc_save_name_fields' );
 
+function krnc_dashboard_nav_items(){
+ 
+	// $menu_links['TAB ID HERE'] = 'NEW TAB NAME HERE';
+  /* $menu_links['edit-account'] = 'Datos de Cuenta';
+  $menu_links['dashboard'] = 'Inicio';
+ 
+  return $menu_links; */
+  $menuOrder = array(
+    'dashboard' => __('Inicio', 'woocommerce'),
+    'edit-account' => __('Datos de Cuenta', 'woocommerce'),
+    'payment-methods' => __('Formas de Pago', 'woocommerce'),
+    'orders' => __('Estado de Compra', 'woocommerce'),
+    'edit-address' => __('Direcciones', 'woocommerce'),
+    'customer-logout' => __('Salir', 'woocommerce'),
+  );
+  return $menuOrder;
+}
+add_filter ( 'woocommerce_account_menu_items', 'krnc_dashboard_nav_items' );
+
 function krnc_register_admin_scripts() {
   wp_enqueue_script('krnc_img_upload', get_template_directory_uri() . '/assets/js/admin.js', array('jquery','media-upload' ), '1.0', true);
   wp_localize_script('krnc_img_upload', 'customUploads', array('imageData' => get_post_meta(get_the_ID(), 'data-custom-image', true)));

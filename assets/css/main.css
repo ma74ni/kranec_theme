@@ -432,6 +432,12 @@ a.added_to_cart {
   overflow: inherit !important;
   height: auto !important;
 }
+.account-nav .is-active a {
+  background: url("img/v-separator.jpg") no-repeat center bottom;
+}
+form.edit-account .password-input {
+  width: 100%;
+}
 /*--------*/
 @media screen and (max-width: 640px) {
   .circle-nav-header {

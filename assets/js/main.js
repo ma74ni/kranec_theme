@@ -190,14 +190,16 @@ document.addEventListener("DOMContentLoaded", () => {
           fullpage_api.moveSectionDown();
         });
       });
-      const showPass = document.querySelector(".show-password-input");
-      showPass.addEventListener("click", (e) => {
-        const inputPass = e.target.parentElement.firstChild;
-        if (inputPass.type === "password") {
-          inputPass.type = "text";
-        } else {
-          inputPass.type = "password";
-        }
+      const showPass = document.querySelectorAll(".show-password-input");
+      showPass.forEach((btnView) => {
+        btnView.addEventListener("click", (e) => {
+          const inputPass = e.target.parentElement.firstChild;
+          if (inputPass.type === "password") {
+            inputPass.type = "text";
+          } else {
+            inputPass.type = "password";
+          }
+        });
       });
     },
   });
