@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         quantity: 1,
         ok: true,
         showLogin: false,
+        actionAccess: "login",
         dropDowns: {
           s_p_colectiva: { isOpen: false },
           e_p_colectiva: { isOpen: false },
@@ -188,6 +189,15 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", () => {
           fullpage_api.moveSectionDown();
         });
+      });
+      const showPass = document.querySelector(".show-password-input");
+      showPass.addEventListener("click", (e) => {
+        const inputPass = e.target.parentElement.firstChild;
+        if (inputPass.type === "password") {
+          inputPass.type = "text";
+        } else {
+          inputPass.type = "password";
+        }
       });
     },
   });

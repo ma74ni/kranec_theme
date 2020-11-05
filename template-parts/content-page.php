@@ -1,6 +1,6 @@
 <?php
 //echo $post->ID;
-   if($post->ID != 304 && $post->ID != 308 && !is_checkout() && !is_cart()) { ?>
+   if($post->ID != 304 && $post->ID != 308 && !is_checkout() && !is_cart() && !is_account_page()) { ?>
 <div class="section">
   <div class="header-blog">
     <div

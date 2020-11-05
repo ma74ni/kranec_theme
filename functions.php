@@ -152,6 +152,30 @@ function krnc_edit_checkout_fields($fields){
 }
 add_filter('woocommerce_checkout_fields','krnc_edit_checkout_fields');
 
+function krnc_validate_name_fields( $errors, $username, $email ) {
+    if ( isset( $_POST['billing_first_name'] ) && empty( $_POST['billing_first_name'] ) ) {
+        $errors->add( 'billing_first_name_error', __( '<strong>Error</strong>: First name is required!', 'woocommerce' ) );
+    }
+    if ( isset( $_POST['billing_last_name'] ) && empty( $_POST['billing_last_name'] ) ) {
+        $errors->add( 'billing_last_name_error', __( '<strong>Error</strong>: Last name is required!.', 'woocommerce' ) );
+    }
+    return $errors;
+}
+add_filter( 'woocommerce_registration_errors', 'krnc_validate_name_fields', 10, 3 );
+
+function krnc_save_name_fields( $customer_id ) {
+    if ( isset( $_POST['billing_first_name'] ) ) {
+        update_user_meta( $customer_id, 'billing_first_name', sanitize_text_field( $_POST['billing_first_name'] ) );
+        update_user_meta( $customer_id, 'first_name', sanitize_text_field($_POST['billing_first_name']) );
+    }
+    if ( isset( $_POST['billing_last_name'] ) ) {
+        update_user_meta( $customer_id, 'billing_last_name', sanitize_text_field( $_POST['billing_last_name'] ) );
+        update_user_meta( $customer_id, 'last_name', sanitize_text_field($_POST['billing_last_name']) );
+    }
+  
+}
+add_action( 'woocommerce_created_customer', 'krnc_save_name_fields' );
+
 function krnc_register_admin_scripts() {
   wp_enqueue_script('krnc_img_upload', get_template_directory_uri() . '/assets/js/admin.js', array('jquery','media-upload' ), '1.0', true);
   wp_localize_script('krnc_img_upload', 'customUploads', array('imageData' => get_post_meta(get_the_ID(), 'data-custom-image', true)));

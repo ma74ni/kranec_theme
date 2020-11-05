@@ -17,6 +17,23 @@ h3 {
 .list-store li:hover .circle-nav-header {
   stroke: #202e4c;
 }
+.rememberme-login {
+  position: relative;
+}
+.rememberme-login label {
+  left: 25px;
+}
+
+.rememberme-login input[type="checkbox"] {
+  visibility: hidden;
+}
+.rememberme-login input[type="checkbox"]:checked + label {
+  background-color: #77bffa;
+  border-color: #77bffa;
+}
+.rememberme-login input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
 #search {
   background: none;
 }
