@@ -14,7 +14,7 @@ h3 {
   font-family: "Bebas Neue", cursive;
   font-size: 2rem;
 }
-.list-store li a:hover .circle-nav-header {
+.list-store li:hover .circle-nav-header {
   stroke: #202e4c;
 }
 #search {
@@ -29,8 +29,6 @@ h3 {
 }
 .fp-slidesNav ul li a span {
   background: #ffffff;
-}
-.text-intro {
 }
 .fp-slidesNav ul li a.active span {
   background: #77bffa;
@@ -147,6 +145,11 @@ a[title="abrir"] {
 }
 .separator-anima:hover::after {
   width: 100%;
+}
+.login-menu {
+  right: 110px;
+  top: 17px;
+  z-index: -1;
 }
 .pilares p {
   font-weight: 300;

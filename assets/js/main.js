@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showProd: 0,
         quantity: 1,
         ok: true,
+        showLogin: false,
         dropDowns: {
           s_p_colectiva: { isOpen: false },
           e_p_colectiva: { isOpen: false },
@@ -44,6 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
           a_e_cremallera: { isOpen: false },
           e_verticales: { isOpen: false },
           e_horizontales: { isOpen: false },
+          c_s_i_construccion: { isOpen: false },
+          l_i_k_plus: { isOpen: false },
         },
       };
     },
@@ -165,10 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
         onLeave: function(origen, destination, direction) {
           if (destination.index == 0) {
             headerNav.className =
-              "fixed w-full pt-2 sm:pt-10 z-10 bg-transparent header-menu";
+              "fixed w-full pt-2 sm:pt-10 z-20 bg-transparent header-menu";
           } else {
             headerNav.className =
-              "fixed w-full py-2  sm:py-4 z-10 bg-kblue-100 bg-opacity-25 header-menu";
+              "fixed w-full py-2  sm:py-4 z-20 bg-kblue-100 bg-opacity-25 header-menu";
           }
         },
         afterRender: function() {

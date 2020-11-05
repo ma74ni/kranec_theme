@@ -1,6 +1,6 @@
 <?php
 //echo $post->ID;
-   if($post->ID != 304 && $post->ID != 308 && !is_checkout() && !is_cart()) {?>
+   if($post->ID != 304 && $post->ID != 308 && !is_checkout() && !is_cart()) { ?>
 <div class="section">
   <div class="header-blog">
     <div
@@ -260,6 +260,10 @@
       <?php /* echo do_shortcode('[best_selling_products category="categoria" limit="2"]'); */ ?>
       </div>
     </div>
+  </div>
+<?php } else if(is_account_page()){ ?>
+  <div class="section">
+    <?php the_content();  ?>
   </div>
 <?php } else {
   the_content(); 

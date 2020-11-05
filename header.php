@@ -11,8 +11,8 @@
 
   <body <?php body_class(); ?>>
     <div id="app">
-      <header class="fixed w-full pt-2 sm:pt-10 z-10 bg-transparent header-menu">
-        <div class="sm:mx-auto md:container px-8 flex flex-col-reverse sm:flex-row sm:justify-between">
+      <header class="fixed w-full pt-2 sm:pt-10 z-20 bg-transparent header-menu">
+        <div class="sm:mx-auto md:container px-8 flex flex-col-reverse sm:flex-row sm:justify-between relative">
           <div class="flex items-center">
             <button @click="isOpen = !isOpen" class="btn-menu mr-4 focus:outline-none">
               <?php 
@@ -81,9 +81,8 @@
           </div>
           <div>
             <ul class="flex store-nav justify-end list-store">
-              <li class="pr-4">
-                <a href=""
-                  ><svg
+              <li class="pr-4 cursor-pointer" v-on:click="showLogin = !showLogin">
+                <svg
                     width="43.39"
                     heigth="43.39"
                     class="inline-block fill-current"
@@ -114,7 +113,21 @@
                       class="text-kblue-100"
                       d="M30.43,34.7H13l0-.58c0-.31-.47-7.7,3.18-11.6a7.35,7.35,0,0,1,5.59-2.32,7.36,7.36,0,0,1,5.6,2.32c3.65,3.9,3.2,11.29,3.18,11.6Zm-16.3-1.23H29.26c0-1.77-.13-7.19-2.87-10.11a6.17,6.17,0,0,0-4.7-1.93A6.17,6.17,0,0,0,17,23.36C14.26,26.29,14.1,31.7,14.13,33.47Z"
                     /></svg
-                ></a>
+                >
+                <?php 
+                if(is_user_logged_in()) { 
+                  $current_user = wp_get_current_user();
+                  $name_user = $current_user->user_firstname .' '. $current_user->user_lastname ;
+                ?>
+                <ul class="bg-blue-kranec py-12 px-8  text-center absolute login-menu" v-if="showLogin">
+                  <li class="mb-8 text-white cursor-default">Hola, <?php echo $name_user; ?></li>
+                  <li><a href="<?php echo get_site_url() ?>./mi-cuenta" class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full">Ver mi cuenta</a></li>
+                </ul>
+                <?php } else { ?>
+                <ul class="bg-blue-kranec py-12 px-8  text-center absolute login-menu" v-if="showLogin">
+                  <li><a href="<?php echo get_site_url() ?>./mi-cuenta" class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full">Registrar o Iniciar sesión</a></li>
+                </ul>
+                <?php } ?>
               </li>
               <li>
                 <a href="<?php echo wc_get_cart_url(); ?>"
@@ -201,6 +214,7 @@
           </div>
         </div>
       </header>
+      <div v-if="showLogin" @click="showLogin = false" class="fixed w-full h-full z-10"></div>
       <div
         @keydown.esc="isOpen = false"
         v-show="isOpen"
