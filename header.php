@@ -121,11 +121,11 @@
                 ?>
                 <ul class="bg-blue-kranec py-12 px-8  text-center absolute login-menu" v-if="showLogin">
                   <li class="mb-8 text-white cursor-default">Hola, <?php echo $name_user; ?></li>
-                  <li><a href="<?php echo get_site_url() ?>./mi-cuenta" class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full">Ver mi cuenta</a></li>
+                  <li><a href="<?php echo get_site_url() ?>/mi-cuenta" class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full">Ver mi cuenta</a></li>
                 </ul>
                 <?php } else { ?>
                 <ul class="bg-blue-kranec py-12 px-8  text-center absolute login-menu" v-if="showLogin">
-                  <li><a href="<?php echo get_site_url() ?>./mi-cuenta" class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full">Registrar o Iniciar sesión</a></li>
+                  <li><a href="<?php echo get_site_url() ?>/mi-cuenta" class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full">Registrar o Iniciar sesión</a></li>
                 </ul>
                 <?php } ?>
               </li>

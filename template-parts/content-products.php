@@ -25,7 +25,8 @@
     <div class="text-center w-2/3 text-lg mx-auto separator-cat mb-20 pb-8"><?php the_excerpt(); ?></div>
       <?php
       $page_id = $post->ID;
-      $table_name = 'wp_krnc_other_product';
+      $prefix = $wpdb->prefix;
+      $table_name = $prefix.'other_product';
       $url_uploads = wp_get_upload_dir()["baseurl"];
       $results = $wpdb->get_results( "SELECT * FROM $table_name WHERE `o_product_status` = 1 AND `o_product_page` = $page_id");
       if(!empty($results)) {
@@ -52,7 +53,7 @@
             <p class="w-2/3 mx-auto font-light"><?php echo nl2br($row->o_product_description); ?></p>
             <ul class="my-8 font-light list-disc items-products">
             <?php 
-            $table_name = 'wp_krnc_content_other_product';
+            $table_name = $prefix.'content_other_product';
             $results = $wpdb->get_results( "SELECT * FROM $table_name WHERE `c_o_product_status` = 1 AND `o_product_ID` = $id_type_product");
             if(!empty($results)) {
               foreach($results as $row){ ?>
