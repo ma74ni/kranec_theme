@@ -5,7 +5,6 @@
       the_post();
       $prefix = $wpdb->prefix;
       $table_name = $prefix.'slide';
-      $table_name = 'wp_krnc_slide';
       $results = $wpdb->get_results( "SELECT * FROM $table_name WHERE `slide_status` = 1 ORDER BY `slide_order` ASC"  ); ?>
 <div class="section text-center">
   <?php

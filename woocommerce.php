@@ -67,6 +67,7 @@
             </div>
             <div class="mx-auto product-desc border-t border-kskyblue-100 mb-8">
               <?php print($product->description); ?>
+              <?php echo wc_display_product_attributes( $product ); ?>
             </div>
             <div class="flex mb-4">
               <div class="w-2/3">
@@ -190,15 +191,15 @@
                 ?>
               <div :class="{ block: showProd == <?php echo $category->term_id; ?>, hidden: showProd != <?php echo $category->term_id; ?> }">
                 <div class="text-center flex w-1/3 mx-auto justify-center">
-                  <a href="#" class="uppercase font-bebas">Más información</a>
-                  <div class="circle-plus text-xl closed px-1">
+                  <a href="#" @click="showDesc = !showDesc"   class="uppercase font-bebas">Más información</a>
+                  <div class="circle-plus text-xl px-1" v-bind:class="[showDesc ? 'opened' : 'closed']">
                     <div class="circle relative cursor-pointer">
                       <div class="horizontal rounded-full absolute bg-kskyblue-100"></div> 
                       <div class="vertical rounded-full absolute bg-kskyblue-100"></div>
                     </div>
                   </div>
                 </div>
-                <div class="w-2/3 mx-auto text-center">
+                <div v-if="showDesc" class="w-2/3 mx-auto text-center">
                   <?php echo $category->category_description; ?>
                 </div>
                 

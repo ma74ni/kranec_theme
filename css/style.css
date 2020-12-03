@@ -9625,6 +9625,14 @@ video {
           animation: bounce 1s infinite;
 }
 
+@fortawesome fontawesome-free scss fontawesome;
+
+@fortawesome fontawesome-free scss brands;
+
+@fortawesome fontawesome-free scss regular;
+
+@fortawesome fontawesome-free scss solid;
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -45508,3 +45516,5 @@ video {
             animation: bounce 1s infinite;
   }
 }
+
+/*# sourceMappingURL=style.css.map*/

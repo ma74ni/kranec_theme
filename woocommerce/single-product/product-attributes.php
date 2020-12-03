@@ -23,11 +23,25 @@ if ( ! $product_attributes ) {
 	return;
 }
 ?>
-<table class="woocommerce-product-attributes shop_attributes">
-	<?php foreach ( $product_attributes as $product_attribute_key => $product_attribute ) : ?>
-		<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--<?php echo esc_attr( $product_attribute_key ); ?>">
-			<th class="woocommerce-product-attributes-item__label"><?php echo wp_kses_post( $product_attribute['label'] ); ?></th>
-			<td class="woocommerce-product-attributes-item__value"><?php echo wp_kses_post( $product_attribute['value'] ); ?></td>
-		</tr>
-	<?php endforeach; ?>
-</table>
+<div class="woocommerce-product-attributes shop_attributes">
+	<?php 
+	$count = -1;
+	foreach ( $product_attributes as $product_attribute_key => $product_attribute ) : ?>
+	<div class="border-b pt-2 pb-4 border-kskyblue-100 mb-2 woocommerce-product-attributes-item woocommerce-product-attributes-item--<?php echo esc_attr( $product_attribute_key ); ?>">
+		<div @click="showAtribute = <?php echo $count; ?>" class="flex justify-between cursor-pointer">
+			<h3 v-bind:class="[showAtribute == <?php echo $count; ?> ? 'active' : '']" class="uppercase font-oswald text-lg mb-2">
+				<?php echo wp_kses_post( $product_attribute['label'] ); ?>
+			</h3>
+			<div class="circle-plus text-xl px-1" v-bind:class="[showAtribute == <?php echo $count; ?> ? 'opened' : 'closed']">
+        <div class="circle relative cursor-pointer">
+         <div class="horizontal rounded-full absolute bg-kskyblue-100"></div> 
+         <div class="vertical rounded-full absolute bg-kskyblue-100"></div>
+        </div>
+      </div>
+		</div>
+		<div v-show="showAtribute == <?php echo $count; ?>" class="text-base px-2 text-justify attribute"><?php echo wp_kses_post( $product_attribute['value'] ); ?></div>
+	</div>
+	<?php 
+	$count++;
+	endforeach; ?>
+</div>

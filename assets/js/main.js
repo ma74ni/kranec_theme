@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
         isOpen: false,
         isShow: false,
         openTab: 1,
+        showAtribute: -1,
+        showDescProd: -1,
+        isActive: true,
+        showDesc: false,
         itemsCarousel: 4,
         showInfo: 0,
         openData: false,
@@ -39,16 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ok: true,
         showLogin: false,
         actionAccess: "login",
-        dropDowns: {
-          s_p_colectiva: { isOpen: false },
-          e_p_colectiva: { isOpen: false },
-          g_torre: { isOpen: false },
-          a_e_cremallera: { isOpen: false },
-          e_verticales: { isOpen: false },
-          e_horizontales: { isOpen: false },
-          c_s_i_construccion: { isOpen: false },
-          l_i_k_plus: { isOpen: false },
-        },
       };
     },
     created() {
@@ -58,11 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
       this.search = searchedString;
     },
     methods: {
-      toggle: function(dropdownName) {
-        //alert(dropdownName);
-        this.dropDowns[dropdownName].isOpen = !this.dropDowns[dropdownName]
-          .isOpen;
-      },
       checkForm: function(e) {
         if (this.FNAME && this.LNAME && this.EMAIL && this.CONAME) {
           return true;
@@ -153,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "sixthPage",
         ],
         scrollOverflow: true,
+        scrollOverflowReset: true,
         verticalCentered: true,
         controlArrows: false,
         slidesNavigation: true,

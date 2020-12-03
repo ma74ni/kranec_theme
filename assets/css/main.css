@@ -255,9 +255,6 @@ a[title="abrir"] {
 .hovering img {
   border-color: #202e4c;
 }
-.dropdown-info {
-  display: none;
-}
 .open .dropdown-info {
   display: block;
 }
@@ -438,6 +435,7 @@ a.added_to_cart {
 form.edit-account .password-input {
   width: 100%;
 }
+
 /*--------*/
 @media screen and (max-width: 640px) {
   .circle-nav-header {
