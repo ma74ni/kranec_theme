@@ -227,7 +227,7 @@
         ></div>
       </div>
       <nav
-        class="w-2/3 sm:w-2/5 bg-blue-kranec px-8 py-8 transform top-0 left-0 w-64 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
+        class="w-2/3 sm:w-2/5 bg-blue-kranec px-8 py-8 transform top-0 left-0 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30"
         :class="isOpen ? 'translate-x-0' : '-translate-x-full'"
       >
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo-nav-content"
