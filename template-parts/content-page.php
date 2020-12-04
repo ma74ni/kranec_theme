@@ -28,6 +28,9 @@
    if(($post->ID == 33)) {?>
 
 <div class="section relative">
+  <div class="text-center w-2/3 text-lg mx-auto separator-cat mb-20 pb-8">
+      <?php the_excerpt(); ?>
+    </div>
   <div class="w-full h-2 bg-kskyblue-100 absolute k-align-line"></div>
   <div class="container mx-auto md:px-8">
     <div class="carousel-example">
@@ -81,18 +84,6 @@
                     </div>
                   </div>
                   <div class="w-1/5"></div>
-                </div>
-
-                <div class="hidden">
-                  <div class="flex">
-                    <div class="w-1/5"></div>
-                    <div class="w-3/5 text-center">
-                      <?php
-                    the_content();
-                    ?>
-                    </div>
-                    <div class="w-1/5"></div>
-                  </div>
                 </div>
               </div>
             </div>
