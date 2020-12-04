@@ -27,18 +27,10 @@
   }
    if(($post->ID == 33)) {?>
 <div class="section">
-    <h2 class="text-2xl sm:text-4xl text-center"><strong>Proyectos Destacados</strong></h2>
+    <h2 class="text-2xl sm:text-4xl"><strong>Proyectos Destacados</strong></h2>
     <div class="text-center w-2/3 text-lg mx-auto separator-cat mb-20 pb-8">
       <?php the_excerpt(); ?>
     </div>
-    <div class="btn-dropdown-post absolute text-center w-full">
-    <button class="nextSection">
-      <img
-        src="<?php echo get_template_directory_uri(); ?>/assets/images/chev-skyblue.png"
-        alt="deslizar"
-      />
-    </button>
-  </div>
 </div>
 <div class="section relative">
   <div class="w-full h-2 bg-kskyblue-100 absolute k-align-line"></div>
@@ -46,8 +38,9 @@
     <div class="carousel-example">
       <?php
     $principalPosts = new  WP_QUERY(array( 'post_type' =>
-      'portfolio', 'orderby' => 'date', 'order' => 'ASC' )); if(
-      $principalPosts->have_posts() ) { 
+      'portfolio', 'orderby' => 'date', 'order' => 'ASC' )); 
+      if($principalPosts->have_posts() ) { 
+        $count = -1;
         while ( $principalPosts->have_posts() ){ 
           $principalPosts->the_post(); 
           $src = get_post_meta(get_the_ID(),'data-custom-image', true); ?>
@@ -75,15 +68,15 @@
               <div class="title-project py-4">
                 <div class="flex flex-col sm:flex-row justify-center items-center">
                   <div class="w-1/5"></div>
-                  <a
-                    href="#"
+                  <h2
                     class="text-base font-bold cursor-pointer text-center px-1 w-2/5"
+                    @click="showInfoProyect = <?php echo $count; ?>"
                   >
                     <?php
                     the_title();
                     ?>
-                  </a>
-                  <div class="circle-plus text-xl closed px-1 w-1/5">
+                  </h2>
+                  <div @click="showInfoProyect = <?php echo $count; ?>" class="circle-plus text-xl px-1 w-1/5" v-bind:class="[showInfoProyect == <?php echo $count; ?> ? 'opened' : 'closed']">
                     <div class="circle relative cursor-pointer">
                       <div
                         class="horizontal rounded-full absolute bg-kblue-100"
@@ -95,12 +88,25 @@
                   </div>
                   <div class="w-1/5"></div>
                 </div>
+
+                <div v-show="showInfoProyect == <?php echo $count; ?>">
+                  <div class="flex">
+                    <div class="w-1/5"></div>
+                    <div class="w-3/5 text-center">
+                      <?php
+                    the_content();
+                    ?>
+                    </div>
+                    <div class="w-1/5"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <?php
+        $count++;
         }
       } ?>
     </div>

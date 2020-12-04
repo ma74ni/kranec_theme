@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         openTab: 1,
         showAtribute: -1,
         showDescProd: -1,
+        showInfoProyect: -1,
         isActive: true,
         showDesc: false,
         itemsCarousel: 4,
@@ -112,22 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      const infoProject = document.querySelectorAll(".title-project");
-      if (infoProject.length > 0) {
-        infoProject.forEach((item) => {
-          item.addEventListener("click", () => {
-            const buttonOpen = item.childNodes[0].childNodes[4];
-            const infoProject = item.childNodes[2];
-            if (buttonOpen.className != "circle-plus text-xl opened") {
-              buttonOpen.className = "circle-plus text-xl opened";
-              infoProject.className = "block content-project-block";
-            } else {
-              buttonOpen.className = "circle-plus text-xl closed";
-              infoProject.className = "hidden";
-            }
-          });
-        });
-      }
       const logoName = document.querySelector("#logo-name svg");
       const logoNameClass = logoName.className.baseVal;
       const sandwichIcon = document.getElementById("sandwich-icon");
