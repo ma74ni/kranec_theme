@@ -26,11 +26,21 @@
 <?php
   }
    if(($post->ID == 33)) {?>
-
-<div class="section relative">
-  <div class="text-center w-2/3 text-lg mx-auto separator-cat mb-20 pb-8">
+<div class="section">
+    <h2 class="text-2xl sm:text-4xl text-center"><strong>Proyectos Destacados</strong></h2>
+    <div class="text-center w-2/3 text-lg mx-auto separator-cat mb-20 pb-8">
       <?php the_excerpt(); ?>
     </div>
+    <div class="btn-dropdown-post absolute text-center w-full">
+    <button class="nextSection">
+      <img
+        src="<?php echo get_template_directory_uri(); ?>/assets/images/chev-skyblue.png"
+        alt="deslizar"
+      />
+    </button>
+  </div>
+</div>
+<div class="section relative">
   <div class="w-full h-2 bg-kskyblue-100 absolute k-align-line"></div>
   <div class="container mx-auto md:px-8">
     <div class="carousel-example">
