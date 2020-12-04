@@ -27,7 +27,7 @@
   }
    if(($post->ID == 33)) {?>
 <div class="section">
-    <h2 class="text-2xl sm:text-4xl"><strong>Proyectos Destacados</strong></h2>
+    <h2 class="text-2xl sm:text-4xl text-center"><strong>Proyectos Destacados</strong></h2>
     <div class="text-center w-2/3 text-lg mx-auto separator-cat mb-20 pb-8">
       <?php the_excerpt(); ?>
     </div>
@@ -49,15 +49,19 @@
           <div
             class="max-w-sm overflow-hidden flex flex-col justify-center relative"
           >
+          <?php if($src) { ?>
             <img
               class="pb-8"
               src="<?php echo $src['src']; ?>"
               alt="<?php the_title(); ?>"
             />
+            <?php } else { ?>
+              <div class="h-48"></div>
+            <?php } ?>
             <div
               class="rounded-full h-6 w-6 bg-kblue-100 mx-auto absolute k-align-round right-0 left-0"
             ></div>
-            <div class="pt-8 content_item_carousell">
+            <div class="pt-20 content_item_carousell">
               <div class="flex">
                 <div class="w-1/5"></div>
                 <div class="w-3/5 text-center">
