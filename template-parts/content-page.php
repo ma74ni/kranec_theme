@@ -34,7 +34,7 @@
 </div>
 <div class="section relative">
   <div class="w-full h-2 bg-kskyblue-100 absolute k-align-line"></div>
-  <div class="container mx-auto md:px-8">
+  <div class="container absolute top-4 left-0 right-0 mx-auto md:px-8">
     <div class="carousel-example">
       <?php
     $principalPosts = new  WP_QUERY(array( 'post_type' =>

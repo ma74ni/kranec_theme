@@ -14,6 +14,9 @@ h3 {
   font-family: "Bebas Neue", cursive;
   font-size: 2rem;
 }
+.top-4 {
+  top: 4rem;
+}
 .list-store li:hover .circle-nav-header {
   stroke: #202e4c;
 }
