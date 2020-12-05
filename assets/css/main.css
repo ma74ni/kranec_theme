@@ -218,10 +218,10 @@ a[title="abrir"] {
   border-radius: 2px 2px 2px 0;
 }
 .k-align-line {
-  top: 33%;
+  top: 17%;
 }
 .k-align-round {
-  top: 28%;
+  top: 8%;
 }
 .separator-v {
   background: url("img/v-separator.png") no-repeat center;
@@ -309,8 +309,8 @@ animación botón +
 
 /**/
 .content_item_carousell {
-  min-height: 470px;
-  padding-top: 55px;
+  min-height: 650px;
+  padding-top: 10px;
 }
 .title-project {
   background: url("img/h-separador-03.png") no-repeat center bottom;

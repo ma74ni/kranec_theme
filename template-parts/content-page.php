@@ -56,12 +56,12 @@
               alt="<?php the_title(); ?>"
             />
             <?php } else { ?>
-              <div class="h-48"></div>
+              <div class="h-32"></div>
             <?php } ?>
             <div
               class="rounded-full h-6 w-6 bg-kblue-100 mx-auto absolute k-align-round right-0 left-0"
             ></div>
-            <div class="pt-20 content_item_carousell">
+            <div class="content_item_carousell">
               <div class="flex">
                 <div class="w-1/5"></div>
                 <div class="w-3/5 text-center">
