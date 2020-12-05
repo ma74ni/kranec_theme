@@ -1,5 +1,5 @@
 <div class="section">
-  <div class="container mx-auto px-12">
+  <div class="container mx-auto px-12 pt-24">
     <div class="blog-title text-center">
       <h1 class="text-5xl uppercase"><?php the_title(); ?></h1>
       <div class="text-xl font-light pb-8"><?php the_excerpt(); ?></div>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="section">
-  <div class="container mx-auto mt-20 px-20 py-12 border-b-2 border-kskyblue-100 blog">
+  <div class="container mx-auto mt-20 px-20 py-12 border-b-2 border-kskyblue-100 blog text-justify">
     <?php
       the_content();
     ?>
