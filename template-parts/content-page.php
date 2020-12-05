@@ -31,6 +31,14 @@
     <div class="text-center w-2/3 text-lg mx-auto separator-cat mb-20 pb-8">
       <?php the_excerpt(); ?>
     </div>
+    <div class="btn-dropdown-post absolute text-center w-full">
+    <button class="nextSection">
+      <img
+        src="<?php echo get_template_directory_uri(); ?>/assets/images/chev-skyblue.png"
+        alt="deslizar"
+      />
+    </button>
+  </div>
 </div>
 <div class="section relative">
   <div class="w-full h-2 bg-kskyblue-100 absolute k-align-line"></div>
@@ -114,6 +122,72 @@
         }
       } ?>
     </div>
+  </div>
+  <div class="btn-dropdown-post absolute text-center w-full">
+    <button class="nextSection">
+      <img
+        src="<?php echo get_template_directory_uri(); ?>/assets/images/chev-skyblue.png"
+        alt="deslizar"
+      />
+    </button>
+  </div>
+</div>
+<div class="section">
+  <h2 class="text-2xl sm:text-4xl text-center"><strong>Nuestros Clientes</strong></h2>
+  <div class="text-center w-2/3 text-lg mx-auto separator-cat mb-20 pb-8">
+    <p class="text-center">Nuestra especialización y experiencia nos han convertido en socio estratégico de los más importantes promotores inmobiliarios y constructores del país.</p>
+  </div>
+  <?php
+  $url_uploads = wp_get_upload_dir()["baseurl"];
+  $prefix = $wpdb->prefix;
+  $table_client = $prefix . 'client';
+  $results = $wpdb->get_results( "SELECT client_name, client_logo,
+client_order FROM $table_client WHERE `client_status` = 1 ORDER BY
+`client_order`" ); 
+  $rowsQuery = $wpdb->num_rows;
+  ?>
+  <div class="mb-4">
+        <?php
+        if(!empty($results)) { ?>
+          <div class="flex flex-wrap justify-center">
+          <?php for($i = 0; $i < $rowsQuery; $i++){?>
+              <img
+                src="<?php echo $url_uploads; ?>/<?php echo $results[$i]->client_logo; ?>"
+                class="mx-2 lg:mx-10"
+                alt="<?php echo $results[$i]->client_name; ?>"
+              />
+          <?php } ?>
+          </div>
+        <?php }
+        ?>
+  </div>
+</div>
+<div class="section">
+  <h2 class="text-2xl sm:text-4xl text-center"><strong>Marcas Aliadas</strong></h2>
+  <div class="text-center w-2/3 text-lg mx-auto separator-cat mb-20 pb-8">
+    <p class="text-center">Somos representantes oficiales, distribuidores y firma técnica autorizada y certificada de las más reconocidas marcas de construcción que garantizan el cumplimiento de los más altos estándares de calidad y normas de seguridad.</p>
+  </div>
+  <?php  
+    $table_client = $prefix . 'partners';
+  $results = $wpdb->get_results( "SELECT partner_name, partner_logo, partner_order FROM $table_client WHERE `partner_status` = 1 ORDER BY
+`partner_order`" ); 
+  $rowsQuery = $wpdb->num_rows;
+  ?>
+  <div class="mb-4">
+        <?php
+        if(!empty($results)) { ?>
+          <div class="flex flex-wrap justify-center">
+          <?php for($i = 0; $i < $rowsQuery; $i++){?>
+              <img
+                src="<?php echo $url_uploads; ?>/<?php echo $results[$i]->partner_logo; ?>"
+                class="mx-2 lg:mx-10"
+                alt="<?php echo $results[$i]->partner_name; ?>"
+              />
+              <p class="text-center"><?php echo $results[$i]->partner_name; ?></p>
+          <?php } ?>
+          </div>
+        <?php }
+        ?>
   </div>
 </div>
 <?php } else if(($post->ID == 304)) {?>

@@ -60,8 +60,6 @@
 client_order FROM $table_client WHERE `client_status` = 1 ORDER BY
 `client_order`" ); 
   $rowsQuery = $wpdb->num_rows;
-  $cols = 7;
-  $rowsShow =  ceil($rowsQuery / $cols);
   ?>
 <div class="section text-center">
   <div class="px-8 mx-auto pb-8 mb-4">
