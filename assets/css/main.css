@@ -120,6 +120,9 @@ footer .logo-content img {
 .header-blog h1 {
   top: 40%;
 }
+.blog p {
+  padding: 0 0 12px 0;
+}
 .cat-item.active {
   background-color: #205497;
   color: #ffffff;

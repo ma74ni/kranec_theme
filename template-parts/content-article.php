@@ -20,7 +20,7 @@
 </div>
 
 <div class="section">
-  <div class="container mx-auto mt-20 px-20 py-12 border-b-2 border-kskyblue-100">
+  <div class="container mx-auto mt-20 px-20 py-12 border-b-2 border-kskyblue-100 blog">
     <?php
       the_content();
     ?>
