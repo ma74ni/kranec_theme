@@ -17,8 +17,8 @@
     style="background-image: url('<?php echo $url_uploads; ?>/<?php echo $row->slide_image; ?>')"
   >
     <div class="sm:w-3/5 mx-auto px-8">
-      <h2 class="text-white text-3xl md:text-4xl lg:text-5xl xl:text-6xl"><?php echo $row->slide_title; ?></h2>
-      <p class="mt-8 mb-12 text-lg md:text-xl lg:text-2xl xl:text-3xl"><?php echo $row->slide_subtitle; ?></p>
+      <h2 class="text-white text-3xl md:text-4xl lg:text-5xl xl:text-6xl" style="text-shadow: 1px 1px 2px #cbd5e0"><?php echo $row->slide_title; ?></h2>
+      <p class="mt-8 mb-12 text-lg md:text-xl lg:text-2xl xl:text-3xl" style="text-shadow: 0 0 2px #4a5568"><?php echo $row->slide_subtitle; ?></p>
       <?php
       if($row->slide_button == 1) { ?>
        <a href="<?php echo get_site_url().$row->slide_link; ?>" class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-12 rounded-full"><?php echo $row->slide_button_text; ?></a>
