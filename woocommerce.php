@@ -134,20 +134,16 @@
     </p>
   </div>
   <?php
-    if(!empty($terms_post)) {
-      foreach ($terms_post as $term_cat) { 
-        $term_cat_id = $term_cat->term_id; 
-        $cat_parent = $term_cat->parent;
+    $cat = $wp_query->get_queried_object();
+    $cat_parent = $cat->term_id;
         $categories = get_categories( 
           array( 'hide_empty' => 0, 
-            //'exclude' => 1,
-            //'name' => 'productos', 
             'parent' => $cat_parent, 
             'child_of' => 0, 
-            'taxonomy'=> 'product_cat' 
-            // mention taxonomy here. 
+            'taxonomy'=> 'product_cat'
           ) 
         );
+        
         ?>
         <div class="md:mx-auto bg-kgray-100 md:container py-8">
           <div class="flex">
@@ -204,6 +200,7 @@
                 </div>
                 
                 <div class="overflow-y-auto h-screen">
+                  
                   <?php
                     $aux = '[products category="'.$cat_slug . '" columns="2"]';
                     echo do_shortcode($aux);
@@ -214,9 +211,7 @@
             </div>
           </div>
         </div>
-        <?php } 
-      } 
-  ?>
+        
   <div class="sm:w-2/3 sm:mx-auto">
     <div class="text-center mb-8 mt-24 md:mt-0">
       <h2 class="w-auto inline-block mx-auto separator-h-c-200">PRODUCTOS MÁS BUSCADOS</h2>
