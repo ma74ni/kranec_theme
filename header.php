@@ -236,18 +236,60 @@
             alt=""
         /></a>
         <?php
-          wp_nav_menu(
-            array(
-              'menu' =>
-        'primary', 'container' => '', 'theme_location' => 'primary',
-        'items_wrap' => '
-        <ul
-          id="%1$s"
-          class="%2$s flex flex-col font-light text-white uppercase pt-8 pb-4 text-lg"
-        >
-          %3$s
-        </ul>
-        ', 'add_li_class' => 'py-2' ) ) ?>
+          $menuLocations = get_nav_menu_locations();
+          $menuID = $menuLocations['primary'];
+          $primaryNav = wp_get_nav_menu_items($menuID);
+          ?>
+          <ul class="font-light text-white uppercase pt-8 pb-4 text-lg">
+          <?php
+          $countSubmenu = -1;
+        foreach ( $primaryNav as $navItem ) {
+        $title = $navItem->title;
+        $link = $navItem->url;
+        if(!$navItem->menu_item_parent){
+          $parent_id = $navItem->ID; ?>
+          <li class="py-2">
+            <div class="flex items-center">
+              <a class="mr-2" href="<?php echo $link; ?>"><?php echo $title; ?></a>
+          <?php } 
+          if($parent_id == $navItem->menu_item_parent) {
+            if(!$submenu) {
+              $submenu = true;
+              
+              if ($submenu) { ?>
+              <div @click="showSubmenu = <?php echo $countSubmenu; ?>" class="circle-plus text-xl px-1" v-bind:class="[showSubmenu == <?php echo $countSubmenu; ?> ? 'opened' : 'closed']">
+                <div class="circle relative cursor-pointer">
+                  <div class="horizontal rounded-full absolute bg-kskyblue-100"></div> 
+                  <div class="vertical rounded-full absolute bg-kskyblue-100"></div>
+                </div>
+              </div>
+              <?php 
+                }
+                ?>
+            </div>
+            <ul v-show="showSubmenu == <?php echo $countSubmenu; ?>" class="pl-8">
+            <?php } ?>
+            <li class="py-2">
+              <a href="<?php echo $link; ?>"><?php echo $title; ?></a>
+            </li>
+            <?php
+              if($primaryNav[$count + 1]->menu_item_parent != $parent_id && $submenu){ ?>
+              </ul>
+              <?php
+              
+              $submenu = false; 
+              }
+            }
+            if($primaryNav[$count + 1]->menu_item_parent != $parent_id){?>
+              </li>
+            <?php
+            $submenu = false;
+            }
+            $count++;
+            $countSubmenu++;
+            }
+            ?>
+            </ul>
         <div class="search pb-8">
           <form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="w-full max-w-sm">
             <div class="flex">

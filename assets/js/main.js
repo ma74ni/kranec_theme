@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showAtribute: -1,
         showDescProd: -1,
         showInfoProyect: -1,
+        showSubmenu: -1,
         isActive: true,
         showDesc: false,
         itemsCarousel: 4,
