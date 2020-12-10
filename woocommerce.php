@@ -160,7 +160,7 @@
             $count ++;
           ?>
                 <li 
-                  v-on:click="showProd = <?php echo $wc_cat_id; ?>" 
+                  v-on:click="showProd = <?php echo $wc_cat_id; ?>, aux()" 
                   class="flex items-center py-2 my-1 hover:bg-kblue-400 hover:text-white text-center cat-item cursor-pointer"
                   :class="[(showProd == <?php echo $wc_cat_id; ?>) ? 'active' : '']"
                 >
