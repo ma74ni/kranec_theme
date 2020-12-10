@@ -47,18 +47,22 @@
   <div class="container mt-24 sm:mt-20 px-8 mx-auto">
     <section class="mb-12">
       <div class="text-center mb-8">
-        <?php 
-        if($post->ID == 346) { ?>
+        <?php
+        global $product;
+        $terms_post = get_the_terms( $post->cat_ID , 'product_cat' ); 
+        $cat = $wp_query->get_queried_object(); 
+        $cat_slug = $cat->slug;
+        if( $cat_slug == 'equipos-de-proteccion-personal' ) { ?>
           <div class="text-center px-4 py-2 m-2">
             <a href="<?php echo esc_url( home_url( '/categoria-producto/productos/insumos-de-bioseguridad/' ) ); ?>"><img class="mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/bioseguridad.jpg" alt=""></a>
           </div>
-          <h2 class="w-auto inline-block mx-auto separator-h-c-200 text-white">compra nuestros insumos de bioseguridad</h2>
-        <?php } else if( $post->ID == 392 ) { ?>
+          <a href="<?php echo esc_url( home_url( '/categoria-producto/productos/insumos-de-bioseguridad/' ) ); ?>" class="w-auto inline-block mx-auto separator-h-c-200 text-white text-4xl">compra nuestros insumos de bioseguridad</a>
+        <?php } else if( $cat_slug == 'insumos-de-bioseguridad' ) { ?>
           <div class="text-center px-4 py-2 m-2">
             <a href="<?php echo esc_url( home_url( '/categoria-producto/productos/equipos-de-proteccion-personal/' ) ); ?>"><img class="mx-auto" src="<?php echo get_template_directory_uri(); ?>/assets/images/proteccion_personal.jpg"
             alt=""></a>
         </div>
-          <h2 class="w-auto inline-block mx-auto separator-h-c-200 text-white">conoce nuestro catálogo de equipos de protección personal</h2>
+          <a href="<?php echo esc_url( home_url( '/categoria-producto/productos/equipos-de-proteccion-personal/' ) ); ?>" class="w-auto inline-block mx-auto separator-h-c-200 text-white text-4xl">conoce nuestro catálogo de equipos de protección personal</a>
         <?php } else { ?>
           <h2 class="w-auto inline-block mx-auto separator-h-c-200 text-white">COMPRA NUESTROS PRODUCTOS EN LÍNEA</h2>
           <div class="flex justify-center mt-16">
