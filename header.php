@@ -23,6 +23,9 @@
                 } else if($post->ID == 33) {
                   $class_color_icon = 'text-white';
                   $class_color_logo = 'text-white';
+                } else if ( is_search() ) {
+                  $class_color_icon = 'text-kblue-100';
+                  $class_color_logo = 'text-kblue-100';
                 }
               ?>
               <svg
@@ -80,121 +83,14 @@
             </a>
           </div>
           <div>
-            <ul class="flex store-nav justify-end list-store">
-              <li class="pr-4 cursor-pointer" v-on:click="showLogin = !showLogin">
-                <svg
-                    width="43.39"
-                    heigth="43.39"
-                    class="inline-block fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 43.39 43.39"
-                  >
-                    <circle
-                      class="text-white stroke-2 circle-nav-header"
-                      cx="22"
-                      cy="22"
-                      r="20"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M13.66,34.16H29.8S31.26,20.6,21.69,20.6C12.89,20.6,13.66,34.16,13.66,34.16Z"
-                    />
-                    <circle
-                      class="text-kskyblue-100"
-                      cx="21.69"
-                      cy="14.98"
-                      r="5.62"
-                    />
-                    <path
-                      class="text-kblue-100"
-                      d="M21.69,21.27A6.29,6.29,0,1,1,28,15,6.29,6.29,0,0,1,21.69,21.27Zm0-11.35A5.06,5.06,0,1,0,26.75,15,5.06,5.06,0,0,0,21.69,9.92Z"
-                    />
-                    <path
-                      class="text-kblue-100"
-                      d="M30.43,34.7H13l0-.58c0-.31-.47-7.7,3.18-11.6a7.35,7.35,0,0,1,5.59-2.32,7.36,7.36,0,0,1,5.6,2.32c3.65,3.9,3.2,11.29,3.18,11.6Zm-16.3-1.23H29.26c0-1.77-.13-7.19-2.87-10.11a6.17,6.17,0,0,0-4.7-1.93A6.17,6.17,0,0,0,17,23.36C14.26,26.29,14.1,31.7,14.13,33.47Z"
-                    /></svg
-                >
+            <ul class="flex justify-end list-store">
+              <li class="cursor-pointer bg-white rounded-full border-2 border-white hover:border-kblue-100 mr-8" :class="[showLogin ? 'border-kblue-100' : '']" v-on:click="showLogin = !showLogin">
+                <img class="w-10" src="<?php echo get_template_directory_uri(); ?>/assets/images/login.svg" alt="">
               </li>
-              <li>
-                <a href="<?php echo wc_get_cart_url(); ?>"
-                  ><svg
-                    width="43.39"
-                    heigth="43.39"
-                    class="inline-block fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 43.39 43.39"
-                  >
-                    <circle
-                      class="text-white stroke-2 circle-nav-header"
-                      cx="22"
-                      cy="22"
-                      r="20"
-                    />
-                    <path
-                      class="text-blue-300"
-                      d="M15.2,16.25l-.58-5.44a1,1,0,0,0-1-.91H10a.93.93,0,0,0-.71.35.89.89,0,0,0-.17.77,1,1,0,0,0,.94.7h2.25a.46.46,0,0,1,.46.4l1.67,15.12a.91.91,0,0,0,.91.8H31.47a.91.91,0,0,0,.89-.73l1.85-10a.9.9,0,0,0-.89-1.07Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M19.37,20.79H15.64l-.27-2.72h3.7Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M19.53,23.51H15.91l.26,2.72H20l-.31-2.72Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M19.67,23.51H23.6V20.79H19.37Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M19.07,18.07l.3,2.72H23.6V18.07Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M28.14,18.07l-.31,2.72h3.93l.46-2.72Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M28.14,18.07l-.31,2.72H23.6V18.07Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M27.83,20.79l-.3,2.72H23.6V20.79Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M31.76,20.79l-.45,2.72H27.53l.3-2.72Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M31.31,23.51l-.45,2.72H27.23l.3-2.72Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M19.67,23.51l-.3-2.72H15.64l.27,2.72Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M23.6,23.51v2.72h3.63l.3-2.72Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M19.67,23.51,20,26.23H23.6V23.51Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M29.5,31.67a1.82,1.82,0,1,1-1.82-1.81,1.81,1.81,0,0,1,1.82,1.81Z"
-                    />
-                    <path
-                      class="text-kskyblue-100"
-                      d="M20.43,31.67a1.82,1.82,0,1,1-1.82-1.81,1.81,1.81,0,0,1,1.82,1.81Z"
-                    />
-                    <path
-                      class="text-blue-100"
-                      d="M34.73,17.36a1.32,1.32,0,0,0-1.3-1.56H15.6l-.53-5a1.45,1.45,0,0,0-1.44-1.31H10a1.33,1.33,0,0,0-1,.4,1.35,1.35,0,0,0-.36,1.27,1.41,1.41,0,0,0,1.39,1.05h2.25L14,27.59a2.27,2.27,0,0,0,.05,4.53h2.31a2.27,2.27,0,0,0,4.45,0h4.62a2.27,2.27,0,0,0,4.45,0h1.84a.45.45,0,1,0,0-.9H29.91a2.27,2.27,0,0,0-4.45,0H20.84a2.27,2.27,0,0,0-4.45,0H14.11a1.39,1.39,0,0,1-1.39-1.31,1.35,1.35,0,0,1,1.36-1.41H31.47a1.36,1.36,0,0,0,1.33-1.11l1.88-9.75Zm-7,13a1.36,1.36,0,1,1-1.36,1.36,1.36,1.36,0,0,1,1.36-1.36Zm-9.07,0a1.36,1.36,0,0,1,1,2.32,1.36,1.36,0,1,1-1-2.32Zm-3.24-12.7a.45.45,0,0,0-.33.15.46.46,0,0,0-.12.35l.8,8.16a.46.46,0,0,0,.45.41H30.86a.46.46,0,0,0,.45-.38l1.44-8.69Zm17.84-.9a.6.6,0,0,1,.59.7l-1.89,9.81a.45.45,0,0,1-.44.37H14.94L13.21,12.07a.91.91,0,0,0-.9-.81H10.07a.5.5,0,0,1-.51-.34.43.43,0,0,1,.13-.43.4.4,0,0,1,.31-.13h3.63a.55.55,0,0,1,.54.5l.58,5.44a.46.46,0,0,0,.45.41Zm-9.15,6.34V21.24h3.27l-.2,1.81ZM27,24l-.21,1.81H24.06V24Zm-3-3.63V18.52h3.57l-.2,1.81Zm-4,2.72-.2-1.81h3.27v1.81Zm3.07.91v1.81H20.38L20.18,24Zm-3.37-3.63-.2-1.81h3.57v1.81Zm-.82.91.21,1.81H16.32l-.18-1.81Zm-2.91-.91-.18-1.81h2.79l.2,1.81ZM19.27,24l.2,1.81H16.58L16.41,24Zm12-2.72-.3,1.81H28l.2-1.81Zm.47-2.72-.32,1.81h-3l.2-1.81ZM30.78,24l-.31,1.81H27.74l.2-1.81Z"
-                    /></svg
-                ></a>
+              <li class="bg-white rounded-full border-2 border-white hover:border-kblue-100">
+                <a href="<?php echo wc_get_cart_url(); ?>">
+                  <img class="w-10" src="<?php echo get_template_directory_uri(); ?>/assets/images/cart.svg" alt="">
+                </a>
               </li>
             </ul>
             <?php 

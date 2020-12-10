@@ -97,7 +97,11 @@
       </div>
       <?php
           global $wp_query;
-          $total_results = $wp_query->found_posts; if( $total_results == 1){ ?>
+          $total_results = $wp_query->found_posts;
+          if( $total_results == 0 ) { ?>
+          <div>
+          <?php }
+          if( $total_results == 1){?>
       <div class="grid grid-cols-1 mb-8">
         <?php
           }
@@ -130,7 +134,10 @@
                  if(has_post_thumbnail()){
                   the_post_thumbnail();
                 } else {?>
-                  <img src="<?php echo woocommerce_placeholder_img_src(); ?>" alt="product placeholder Image" />
+                <img
+                  src="<?php echo woocommerce_placeholder_img_src(); ?>"
+                  alt="product placeholder Image"
+                />
                 <?php } ?>
               </a>
             </div>
@@ -140,7 +147,7 @@
   } else {
     ?>
             <h3 class="py-8 text-center">
-              - No se encontraron resultados -
+              No se encontraron resultados
             </h3>
             <?php
   }
@@ -150,7 +157,6 @@
       </div>
     </div>
     <?php
-  get_footer();
-?>
+        get_footer(); ?>
   </div>
 </div>
