@@ -81,7 +81,7 @@
                 <div class="flex flex-col sm:flex-row justify-center items-center">
                   <div class="w-1/5"></div>
                   <h2
-                    class="text-base font-bold cursor-pointer text-center px-1 w-2/5"
+                    class="text-base font-medium cursor-pointer text-center px-1 w-2/5"
                     @click="showInfoProyect = <?php echo $count; ?>"
                   >
                     <?php
@@ -104,7 +104,7 @@
                 <div v-show="showInfoProyect == <?php echo $count; ?>">
                   <div class="flex">
                     <div class="w-1/5"></div>
-                    <div class="w-3/5 text-center">
+                    <div class="w-3/5 text-center font-light text-base info-project">
                       <?php
                     the_content();
                     ?>
