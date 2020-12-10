@@ -6,13 +6,14 @@
     <h2 class="w-auto inline-block mx-auto separator-h-c-200">VISITA NUESTRO BLOG</h2>
   </div>
   <div class="container px-8 mx-auto">
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
+    <div class="grid grid-cols-1 sm:grid-cols-6 gap-12">
       <?php
             $principalPosts = new  WP_QUERY('orderby=date&order=ASC&posts_per_page=3');
               if( $principalPosts->have_posts() ) {
+                $numPost = count($principalPosts->posts);
                 while ( $principalPosts->have_posts() ) {
                   $principalPosts->the_post();?>
-      <div class="single-post text-center">
+      <div class="<?php echo $numPost == 2 ? 'col-span-3' : 'col-span-2' ?> single-post text-center">
         <a href="<?php the_permalink(); ?>">
           <?php the_post_thumbnail(); ?>
         </a>

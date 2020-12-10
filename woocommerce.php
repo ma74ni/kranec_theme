@@ -225,7 +225,7 @@
       );
       $loop = new WP_Query( $args );
       while ( $loop->have_posts() ) : $loop->the_post(); ?>
-      <div class="w-1/6 sm:mx-8">
+      <div class="w-1/6 sm:mx-12">
         <a href="<?php the_permalink(); ?>" id="id-<?php the_id(); ?>" title="<?php the_title(); ?>" class="text-center">
           <?php if (has_post_thumbnail( $loop->post->ID )) {
               $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'full' );
