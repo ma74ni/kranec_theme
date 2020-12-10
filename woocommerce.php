@@ -211,15 +211,36 @@
             </div>
           </div>
         </div>
-        
-  <div class="sm:w-2/3 sm:mx-auto">
-    <div class="text-center mb-8 mt-24 md:mt-0">
+  <div class="sm:w-2/3 sm:mx-auto my-8">
+    <div class="text-center">
       <h2 class="w-auto inline-block mx-auto separator-h-c-200">PRODUCTOS MÁS BUSCADOS</h2>
     </div>
-      <?php
-        $aux = '[products best_selling="true" columns="3" limit="3"]';
-        echo do_shortcode($aux);
-      ?>
+    <div class="flex justify-center mt-12">
+    <?php
+      $args = array(
+          'post_type' => 'product',
+          'meta_key' => 'total_sales',
+          'orderby' => 'meta_value_num',
+          'posts_per_page' => 3,
+      );
+      $loop = new WP_Query( $args );
+      while ( $loop->have_posts() ) : $loop->the_post(); ?>
+      <div class="w-1/6 sm:mx-8">
+        <a href="<?php the_permalink(); ?>" id="id-<?php the_id(); ?>" title="<?php the_title(); ?>" class="text-center">
+          <?php if (has_post_thumbnail( $loop->post->ID )) {
+              $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $loop->post->ID ), 'full' );
+              ?>
+              <img class="rounded-full" src="<?php echo $large_image_url[0]; ?>" alt="<?php the_title(); ?>">
+          <?php } else {
+            echo '<img class="rounded-full border-2" src="'.woocommerce_placeholder_img_src().'" alt="product placeholder Image" />';
+          }
+          ?>
+          <h4 class="pt-4 text-base font-bold pb-4 separator-h-c-200"><?php the_title(); ?></h4>
+        </a>
+      </div>
+      <?php endwhile; ?>
+      <?php wp_reset_query(); ?>
+    </div>
   </div>
 </div>
 <?php }
