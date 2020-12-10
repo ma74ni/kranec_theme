@@ -39,8 +39,8 @@
         <ul class="blog-cat-list font-light uppercase flex divide-x-2 divide-kskyblue-100 justify-center">
           <?php
             foreach($categories as $category) { ?>
-            <li>
-              <a class="inline-block px-8" href=""><?php echo $category->name; ?></a>
+            <li class="inline-block px-8" href="" @click="showArticles = <?php echo $category->term_id; ?>">
+              <?php echo $category->name; ?>
             </li>
       <?php } ?>
         </ul>
@@ -48,35 +48,52 @@
         } ?>
       </div>
     </div>
-    <div class="flex flex-wrap">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
       <?php
-      $principalPosts = new  WP_QUERY('orderby=date&order=ASC&posts_per_page=4');
-      if($principalPosts->have_posts()){ while($principalPosts->have_posts()){
-      $principalPosts->the_post(); ?>
-      <div class="w-1/2 p-2">
-        <div class="single-post text-center">
-          <a href="<?php the_permalink(); ?>">
-            <?php the_post_thumbnail(); ?>
-          </a>
-          <h3 class="header-post uppercase">
+      if ( $post ) {
+        $categories = get_categories($post->ID); 
+          if(! empty($categories)) {
+            foreach($categories as $category) {
+              $principalPosts = new  WP_QUERY(
+                array(
+                  'orderby' => 'date',
+                  'order' => 'ASC',
+                  'posts_per_page' => 4,
+                  'cat' => $category->term_id
+                )
+              );
+              if($principalPosts->have_posts()) { 
+                $numPosts = count($principalPosts->posts);
+        while($principalPosts->have_posts()){
+        $principalPosts->the_post(); ?>
+        <div v-show="showArticles == <?php echo $category->term_id; ?>" class="<?php echo $numPosts == 1 ? 'col-span-2' : '' ?>">
+          <div class="single-post text-center">
             <a href="<?php the_permalink(); ?>">
-              <?php the_title(); ?>
+              <?php the_post_thumbnail(); ?>
             </a>
-          </h3>
-          <p class="text-xl"><?php the_excerpt(); ?></p>
-          <div class="my-8">
-            <a
-              class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-4 rounded-full"
-              href="<?php the_permalink(); ?>"
-              title="<?php the_title_attribute(); ?>"
-              >Leer más</a
-            >
+            <h3 class="header-post uppercase">
+              <a href="<?php the_permalink(); ?>">
+                <?php the_title(); ?>
+              </a>
+            </h3>
+            <p class="text-xl"><?php the_excerpt(); ?></p>
+            <div class="my-8">
+              <a
+                class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-4 rounded-full"
+                href="<?php the_permalink(); ?>"
+                title="<?php the_title_attribute(); ?>"
+                >Leer más</a
+              >
+            </div>
           </div>
         </div>
-      </div>
       <?php
         }
+      } 
+            }
+          }
       } ?>
+      
     </div>
   </div>
 </div>
