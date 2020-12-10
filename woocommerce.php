@@ -186,8 +186,8 @@
                   $cat_slug = $category->slug;
                 ?>
               <div :class="{ block: showProd == <?php echo $category->term_id; ?>, hidden: showProd != <?php echo $category->term_id; ?> }">
-                <div class="text-center flex w-1/3 mx-auto justify-center">
-                  <a href="#" @click="showDesc = !showDesc"   class="uppercase font-bebas">Más información</a>
+                <div @click="showDesc = !showDesc" class="cursor-pointer text-center flex w-1/3 mx-auto justify-center">
+                  <a href="#" class="uppercase font-bebas">Más información</a>
                   <div class="circle-plus text-xl px-1" v-bind:class="[showDesc ? 'opened' : 'closed']">
                     <div class="circle relative cursor-pointer">
                       <div class="horizontal rounded-full absolute bg-kskyblue-100"></div> 
