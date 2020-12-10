@@ -55,6 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
       this.search = searchedString;
     },
     methods: {
+      aux: function() {
+        fullpage_api.reBuild();
+      },
       checkForm: function(e) {
         if (this.FNAME && this.LNAME && this.EMAIL && this.CONAME) {
           return true;

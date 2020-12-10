@@ -39,7 +39,9 @@
         <ul class="blog-cat-list font-light uppercase flex divide-x-2 divide-kskyblue-100 justify-center">
           <?php
             foreach($categories as $category) { ?>
-            <li class="inline-block px-8" href="" @click="showArticles = <?php echo $category->term_id; ?>">
+            <li class="item-name-category inline-block px-8 cursor-pointer" 
+              :class="[showArticles == <?php echo $category->term_id; ?> ? 'font-medium pb-2 separator-h-c-200' : '' ]" 
+              @click="showArticles = <?php echo $category->term_id; ?>, aux()">
               <?php echo $category->name; ?>
             </li>
       <?php } ?>
