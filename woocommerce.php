@@ -1,7 +1,8 @@
 <?php get_header(); ?>
 <?php
   if(is_shop()) {
-    $table_name = 'wp_krnc_slide';
+    $prefix = $wpdb->prefix;
+      $table_name = $prefix.'slide';
       $results = $wpdb->get_results( "SELECT * FROM $table_name WHERE `slide_status` = 1 ORDER BY `slide_order` ASC"  );
       if(!empty($results)) { ?>
 <div class="section">
