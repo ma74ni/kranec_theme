@@ -291,6 +291,7 @@
             ?>
             </ul>
         <div class="search pb-8">
+          <?php get_product_search_form(); ?>
           <form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" class="w-full max-w-sm">
             <div class="flex">
               <input type="text" name="s" id="search" value="" placeholder="BUSCAR" class="appearance-none block w-full text-white border py-2 px-4 leading-tight mr-2">

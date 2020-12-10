@@ -29,7 +29,7 @@
               <button
                 type="submit"
                 alt="Search"
-                class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-4 rounded-full focus:outline-none"
+                class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-4 rounded-full focus:outline-none appearance-none"
               >
                 Buscar
               </button>
@@ -38,7 +38,7 @@
               <button
                 v-on:click="search = ''"
                 type="button"
-                class="pr-8 text-kblue-200"
+                class="pr-8 text-kblue-200 appearance-none"
               >
                 <svg
                   width="17.19"
@@ -65,7 +65,7 @@
               <button
                 v-on:click="search = ''"
                 type="button"
-                class="pr-8 text-kblue-200"
+                class="pr-8 text-kblue-200 appearance-none"
               >
                 <svg
                   width="17.19"
@@ -87,7 +87,7 @@
               <button
                 type="submit"
                 alt="Search"
-                class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-4 rounded-full focus:outline-none"
+                class="bg-kskyblue-100 hover:bg-kskyblue-200 text-white font-bold py-2 px-4 rounded-full focus:outline-none appearance-none"
               >
                 Buscar
               </button>
@@ -126,7 +126,12 @@
                 </a>
               </h4>
               <a class="search-image block" href="<?php the_permalink(); ?>">
-                <?php the_post_thumbnail(); ?>
+                <?php
+                 if(has_post_thumbnail()){
+                  the_post_thumbnail();
+                } else {?>
+                  <img src="<?php echo woocommerce_placeholder_img_src(); ?>" alt="product placeholder Image" />
+                <?php } ?>
               </a>
             </div>
 
@@ -135,7 +140,7 @@
   } else {
     ?>
             <h3 class="py-8 text-center">
-              - No se encontraron resultados. -
+              - No se encontraron resultados -
             </h3>
             <?php
   }
