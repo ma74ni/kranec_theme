@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     methods: {
       aux: function() {
-        console.log("oki");
         fullpage_api.reBuild();
       },
       checkForm: function(e) {
